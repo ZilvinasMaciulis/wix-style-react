@@ -1,0 +1,88 @@
+:import {
+  -st-from: "wix-ui-core/index.st.css";
+  -st-named: LinearProgressBar;
+}
+
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
+  -st-named: fontMedium;
+}
+
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/colors.st.css";
+  -st-named:
+          B00, B10, B30,
+          D20,
+          R00, R10, R30,
+          WHITE,
+}
+
+.root {
+  -st-states: light;
+  -st-extends: LinearProgressBar;
+  padding: 0px 6px;
+  height: 30px;
+}
+
+.root::barForeground {
+  background: value(B00);
+  transition: width 0.5s ease-in-out;
+}
+
+.root::barBackground {
+  background: value(B30);
+}
+
+.root::barBackground,
+.root::barForeground
+{
+  border-radius: 2px;
+  height: 4px;
+}
+
+.root:error::barForeground {
+  background: value(R00);
+}
+
+.root:error::barBackground {
+  background: value(R30);
+}
+
+.root:light::barBackground {
+  background: value(WHITE);
+}
+
+.root::progressIndicationSection {
+  margin-left: 18px;
+}
+
+:global([dir="rtl"]) .root::progressIndicationSection {
+  margin-right: 18px;
+  margin-left: 0;
+}
+
+.root::indicationContainer {
+  width: 18px;
+  height: 18px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: value(D20);
+  font-size: 10px;
+  font-family: value(fontMedium);
+}
+
+.root:success::indicationContainer {
+  background: value(B10);
+}
+
+.root:error::indicationContainer {
+  background: value(R10);
+}
+
+.root::indicationContainer svg {
+  height: 8px;
+  width: 10px;
+  color: value(WHITE);
+}
