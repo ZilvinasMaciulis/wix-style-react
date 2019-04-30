@@ -3,14 +3,15 @@ import { storiesOf } from '@storybook/react';
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
 import { storySettings } from './storySettings';
 
-import LinearProgressBarNew from '..';
+import LinearProgressBar from '..';
 
 const TestStories = storiesOf(getTestStoryKind(storySettings), module);
 const { testStoryNames, dataHook } = storySettings;
 
 TestStories.add(testStoryNames.DEFAULT, () => (
-  <LinearProgressBarNew
+  <LinearProgressBar
     dataHook={dataHook}
-    buttonText="Press me for a surprise"
+    errorMessage="some error message"
+    value={20}
   />
 ));
