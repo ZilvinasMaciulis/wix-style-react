@@ -1,11 +1,11 @@
 import { Category } from '../../../stories/storiesHierarchy';
 
-//TODO: changing testStoryName according to e2e
 export const storySettings = {
   category: Category.COMPONENTS,
   storyName: 'LinearProgressBar',
   dataHook: 'story-linear-progress-bar',
   testStoryNames: {
-    DEFAULT: 'Default',
+    tooltipOnErrorProgressIndication:
+      'display tooltip on icon hover when there is error progress indication is set to true',
   },
 };

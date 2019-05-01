@@ -8,10 +8,12 @@ import LinearProgressBar from '..';
 const TestStories = storiesOf(getTestStoryKind(storySettings), module);
 const { testStoryNames, dataHook } = storySettings;
 
-TestStories.add(testStoryNames.DEFAULT, () => (
+TestStories.add(testStoryNames.tooltipOnErrorProgressIndication, () => (
   <LinearProgressBar
     dataHook={dataHook}
     errorMessage="some error message"
+    error
+    showProgressIndication
     value={20}
   />
 ));
