@@ -1,21 +1,23 @@
 import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.protractor.driver';
-import { isFocused } from 'wix-ui-test-utils/protractor';
+import inputDriverFactory from '../Input/Input.protractor.driver';
 
 const driverFactory = component => {
   const dropdownLayoutDriver = dropdownLayoutDriverFactory(
     component.$('[data-hook="dropdown-layout-wrapper"]'),
   );
-  const input = component.$(`input`);
+  const inputDriver = inputDriverFactory(
+    component.$(`[data-hook="input-with-options--input"]`),
+  );
 
   return {
     ...dropdownLayoutDriver,
-    click: () => component.click(),
-    getInput: () => input,
-    isFocused: () => isFocused(input),
+    click: () => inputDriver.click(),
+    getInput: () => inputDriver.element(),
+    isFocused: () => inputDriver.isFocused(),
     element: () => component,
     /** Check wether the options dropdown is open */
     isOptionsShown: () => dropdownLayoutDriver.getDropdown().isDisplayed(),
-    enterText: text => input.clear().sendKeys(text),
+    enterText: () => inputDriver.enterText(),
   };
 };
 

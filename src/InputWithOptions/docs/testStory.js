@@ -4,8 +4,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
-import { storySettings, testStories } from './storySettings';
+import {
+  storySettings,
+  insideFormStorySettings,
+  testStories,
+} from './storySettings';
 import TestTabSwitches from './tests/TestTabSwitches';
+import TestInsideWrapperForm from './tests/TestInsideWrapperForm';
 
 const kind = getTestStoryKind({
   storyName: storySettings.storyName,
@@ -33,4 +38,13 @@ storiesOf(kind, module).add(testStories.tabsSwitches, () => (
     <TestTabSwitches />
     <input data-hook="input-for-focus-2" />
   </TestContainer>
+));
+
+const insideFormKind = getTestStoryKind({
+  storyName: insideFormStorySettings.storyName,
+  category: insideFormStorySettings.category,
+});
+
+storiesOf(insideFormKind, module).add(testStories.insideWrappingForm, () => (
+  <TestInsideWrapperForm />
 ));
