@@ -171,7 +171,11 @@ class InputWithOptions extends WixComponent {
     return (
       <div>
         {dropDirectionUp ? this._renderDropdownLayout() : null}
-        <div data-input-parent className={this.inputClasses()}>
+        <div
+          data-input-parent
+          className={this.inputClasses()}
+          data-hook="input-with-options--input"
+        >
           {this.renderInput()}
         </div>
         {!dropDirectionUp ? this._renderDropdownLayout() : null}
@@ -321,6 +325,11 @@ class InputWithOptions extends WixComponent {
     }
 
     const { key } = event;
+
+    // Prevent a wrapping form from submitting when hitting Enter
+    if (key === 'Enter') {
+      event.preventDefault();
+    }
 
     if (key !== 'ArrowDown' && key !== 'ArrowUp') {
       this.setState({ isEditing: true });

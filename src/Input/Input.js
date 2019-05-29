@@ -405,7 +405,7 @@ class Input extends Component {
     const { customInput: CustomInputComponent, dataRef, ...rest } = props;
     const inputProps = {
       ...(CustomInputComponent
-        ? { 'data-ref': dataRef, ...rest, 'data-hook': 'wsr-custom-input' }
+        ? { 'data-ref': dataRef, ...rest, 'data-hook': 'wsr-input-custom' }
         : { ref: dataRef, ...rest }),
     };
 
