@@ -5,6 +5,7 @@ import {
   waitForVisibilityOf,
   protractorTestkitFactoryCreator,
 } from 'wix-ui-test-utils/protractor';
+import { sleep } from 'wix-ui-test-utils/react-helpers';
 import { createTestStoryUrl } from '../../test/utils/storybook-helpers';
 import {
   storySettings,
@@ -63,7 +64,7 @@ describe('InputWithOptions', () => {
       await driver.selectItemById('0');
       await driver.pressEnter();
 
-      await waitFor(100);
+      await sleep(100);
       const wasFormSubmitted =
         $('[data-hook="was-submitted"]').getText() === 'yes';
 
@@ -71,11 +72,6 @@ describe('InputWithOptions', () => {
     });
   });
 });
-
-const waitFor = ms =>
-  new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
 
 const navigateToTestUrl = async (
   testName,

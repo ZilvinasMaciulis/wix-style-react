@@ -62,7 +62,7 @@ export const testkit = base => {
     },
     getTabIndex: async () => await reactBaseInput.tabIndex(),
     isCustomInput: async () =>
-      (await input.attr('data-hook')) === 'wsr-input-custom',
+      (await input.attr('data-hook')) === 'wsr-custom-input',
     getReadOnly: async () => await reactBaseInput.readOnly(),
     getDisabled: async () => await reactBaseInput.disabled(),
     getTextOverflow: async () =>
