@@ -30,9 +30,7 @@ describe('MultiSelectCheckbox', () => {
       driver.selectItemById('Arkansas');
       driver.selectItemById('California');
 
-      expect(driver.getInput().getAttribute('value')).toBe(
-        'Arkansas, California',
-      );
+      expect(await driver.getInputText()).toBe('Arkansas, California');
     },
   );
 

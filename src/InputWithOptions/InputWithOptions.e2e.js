@@ -17,26 +17,24 @@ describe('InputWithOptions', () => {
   let driver;
 
   describe('Component', () => {
+    const { dataHook } = storySettings;
+
     beforeEach(async () => {
-      await navigateToTestUrl(testStories.tabsSwitches);
-      driver = inputWithOptionsTestkitFactory({
-        dataHook: storySettings.dataHook,
+      await navigateToTestUrl(testStories.tabsSwitches, storySettings);
+      driver = protractorTestkitFactoryCreator(inputWithOptionsTestkitFactory)({
+        dataHook,
       });
-      await waitForVisibilityOf(
-        driver.element(),
-        `Cant find ${storySettings.dataHook}`,
-      );
+      await waitForVisibilityOf(driver.element(), `Cant find ${dataHook}`);
     });
 
     it('should move out focus of input if nothing is pressed / selected', async () => {
-      await focusOnInputWithOptions();
-
+      await focusOnInputWithOptions(driver);
       await pressTab();
       expect(await driver.isFocused()).toEqual(false);
     });
 
     it('should move out focus of input when have manual text option', async () => {
-      await focusOnInputWithOptions();
+      await focusOnInputWithOptions(driver);
 
       await driver.enterText('some option');
       await pressTab();
@@ -92,8 +90,8 @@ const pressTab = () =>
     .sendKeys(protractor.Key.TAB)
     .perform();
 
-const focusOnInputWithOptions = async (driver, dataHook) => {
-  const firstElement = $(`[data-hook="${dataHook}"]`);
+const focusOnInputWithOptions = async driver => {
+  const firstElement = $(`[data-hook="input-for-focus-1"]`);
 
   await pressTab();
   expect(await isFocused(firstElement)).toEqual(true);
