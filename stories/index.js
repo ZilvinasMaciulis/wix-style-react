@@ -151,7 +151,7 @@ require('../src/TimeInput/docs/testStory');
 require('../src/Page/docs/PageTestStories'); // Tests/2. Layout/2.5 + Page/
 require('../src/Page/docs/PageTestStoriesDeprecated'); // Tests/2. Layout/2.5 + Page/Deprecated
 require('../src/PageHeader/docs/PageHeaderTestStories'); // Tests/2. Layout/2.5 + PageHeader/
-require('../src/IconButton/docs/testStory'); // Tests/5. Button/5.2 IconButton
+require('../src/IconButton/test/testStory'); // Tests/5. Button/5.2 IconButton
 require('../src/TextButton/docs/testStory'); // Tests/5. Button/5.3 TextButton
 require('../src/CloseButton/docs/testStory'); // Tests/5. Button/5.4 CloseButton
 require('../src/Calendar/docs/CalendarTestStory'); // Tests/3. Inputs/3.13 Calendar
