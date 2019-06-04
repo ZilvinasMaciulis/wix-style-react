@@ -13,11 +13,12 @@ const driverFactory = component => {
     ...dropdownLayoutDriver,
     click: () => inputDriver.click(),
     getInput: () => inputDriver.element(),
+    getInputText: () => inputDriver.getText(),
     isFocused: () => inputDriver.isFocused(),
     element: () => component,
     /** Check wether the options dropdown is open */
     isOptionsShown: () => dropdownLayoutDriver.getDropdown().isDisplayed(),
-    enterText: () => inputDriver.enterText(),
+    enterText: text => inputDriver.enterText(text),
   };
 };
 
