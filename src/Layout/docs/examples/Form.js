@@ -9,48 +9,7 @@ import Checkbox from 'wix-style-react/Checkbox';
 import Text from 'wix-style-react/Text';
 import Button from 'wix-style-react/Button';
 import RadioGroup from 'wix-style-react/RadioGroup';
-import MultiSelect from 'wix-style-react/MultiSelect';
 import styles from '../styles.scss';
-
-class MultiSelectForTest extends React.Component {
-  state = {
-    tags: [],
-    inputValue: '',
-  };
-
-  nextId = 0;
-
-  handleOnChange = event => {
-    this.setState({ inputValue: event.target.value });
-  };
-
-  handleOnRemoveTag = tagId =>
-    this.setState({
-      tags: this.state.tags.filter(currTag => currTag.id !== tagId),
-    });
-
-  handleOnManuallyInput = values => {
-    const tags = values.map(value => {
-      const tag = { id: String(this.nextId++), label: value };
-      return tag;
-    });
-    this.setState({ tags: [...this.state.tags, ...tags] });
-  };
-
-  render() {
-    return (
-      <MultiSelect
-        dataHook="multi-select-tags-input"
-        value={this.state.inputValue}
-        onChange={this.handleOnChange}
-        tags={this.state.tags}
-        onManuallyInput={this.handleOnManuallyInput}
-        onRemoveTag={this.handleOnRemoveTag}
-        upgrade
-      />
-    );
-  }
-}
 
 export default () => (
   <div className={styles.exampleContainer}>
@@ -84,19 +43,6 @@ export default () => (
                     {field('')}
                   </Cell>
                 </Layout>
-
-                {divider()}
-
-                <form>
-                  <Layout gap="10">
-                    <Cell span={3} vertical>
-                      <Text>Hobbies:</Text>
-                    </Cell>
-                    <Cell span={9} vertical>
-                      <MultiSelectForTest />
-                    </Cell>
-                  </Layout>
-                </form>
 
                 {divider()}
 
