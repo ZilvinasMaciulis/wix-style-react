@@ -16,6 +16,16 @@ import {
 describe('InputWithOptions', () => {
   let driver;
 
+  const focusOnInputWithOptions = async () => {
+    const firstElement = $(`[data-hook="input-for-focus-1"]`);
+
+    await pressTab();
+    expect(await isFocused(firstElement)).toEqual(true);
+
+    await pressTab();
+    expect(await driver.isFocused()).toEqual(true);
+  };
+
   describe('Component', () => {
     const { dataHook } = storySettings;
 
@@ -28,13 +38,13 @@ describe('InputWithOptions', () => {
     });
 
     it('should move out focus of input if nothing is pressed / selected', async () => {
-      await focusOnInputWithOptions(driver);
+      await focusOnInputWithOptions();
       await pressTab();
       expect(await driver.isFocused()).toEqual(false);
     });
 
     it('should move out focus of input when have manual text option', async () => {
-      await focusOnInputWithOptions(driver);
+      await focusOnInputWithOptions();
 
       await driver.enterText('some option');
       await pressTab();
@@ -89,13 +99,3 @@ const pressTab = () =>
     .actions()
     .sendKeys(protractor.Key.TAB)
     .perform();
-
-const focusOnInputWithOptions = async driver => {
-  const firstElement = $(`[data-hook="input-for-focus-1"]`);
-
-  await pressTab();
-  expect(await isFocused(firstElement)).toEqual(true);
-
-  await pressTab();
-  expect(await driver.isFocused()).toEqual(true);
-};
