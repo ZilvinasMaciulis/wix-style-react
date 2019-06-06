@@ -48,10 +48,19 @@ class MultiSelectCheckbox extends InputWithOptions {
   }
 
   inputAdditionalProps() {
+    const inputDataHook = 'multiselect-checkbox--input';
+
     return {
       readOnly: false,
       disableEditing: true,
-      inputElement: <Input textOverflow="ellipsis" disableEditing />,
+      inputElement: (
+        <Input
+          textOverflow="ellipsis"
+          disableEditing
+          dataHook={inputDataHook}
+        />
+      ),
+      dataHook: inputDataHook,
       value: this.selectedOptionsToText(),
     };
   }

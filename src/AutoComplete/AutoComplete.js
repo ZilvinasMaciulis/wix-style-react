@@ -1,5 +1,7 @@
+import React from 'react';
 import { func } from 'prop-types';
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
+import Input from '../Input';
 
 class AutoComplete extends InputWithOptions {
   static propTypes = {
@@ -11,6 +13,15 @@ class AutoComplete extends InputWithOptions {
     ...InputWithOptions.defaultProps,
     predicate: () => true,
   };
+
+  inputAdditionalProps() {
+    const dataHook = 'autocomplete--inputElement';
+
+    return {
+      inputElement: <Input dataHook={dataHook} />,
+      dataHook,
+    };
+  }
 
   dropdownAdditionalProps() {
     const { options, predicate, emptyStateMessage } = this.props;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
 import classNames from 'classnames';
-
 import Ticker from './Ticker';
 import Unit from './Unit';
 import IconAffix from './IconAffix';
@@ -55,9 +55,7 @@ class Input extends Component {
   logDeprecations(props) {
     if (props.unit) {
       deprecationLog(
-        `Input's unit prop is deprecated and will be removed in the next major release, please use suffix property with '<Input suffix={<Input.Affix>${
-          props.unit
-        }</Input.Affix>}/>' instead`,
+        `Input's unit prop is deprecated and will be removed in the next major release, please use suffix property with '<Input suffix={<Input.Affix>${props.unit}</Input.Affix>}/>' instead`,
       );
     }
     if (props.magnifyingGlass) {
@@ -111,8 +109,6 @@ class Input extends Component {
       menuArrow,
       defaultValue,
       tabIndex,
-      clearButton,
-      onClear,
       autoFocus,
       onKeyUp,
       onPaste,
@@ -138,6 +134,7 @@ class Input extends Component {
       errorMessage,
       customInput,
     } = this.props;
+
     const onIconClicked = e => {
       if (!disabled) {
         this.input.focus();
@@ -229,17 +226,21 @@ class Input extends Component {
       ...inputElementProps,
     });
 
+    const inputContentProps = omit(this.props, ['dataHook']); // don't pass dataHook to children
+
     return (
       <div className={styles.inputWrapper}>
         {prefix && (
           <div className={styles.prefix}>
-            <InputContext.Provider value={{ ...this.props, inPrefix: true }}>
+            <InputContext.Provider
+              value={{ ...inputContentProps, inPrefix: true }}
+            >
               <span>{prefix}</span>
             </InputContext.Provider>
           </div>
         )}
         {inputElement}
-        <InputContext.Provider value={{ ...this.props, inSuffix: true }}>
+        <InputContext.Provider value={{ ...inputContentProps, inSuffix: true }}>
           {visibleSuffixCount > 0 && (
             <InputSuffix
               status={suffixStatus}
@@ -403,18 +404,26 @@ class Input extends Component {
   _renderInput = props => {
     const { customInput: CustomInputComponent, dataRef, ...rest } = props;
 
-    const { dataHook } = this.props;
-
     const inputProps = {
       ...(CustomInputComponent
-        ? { ...rest, 'data-ref': dataRef, 'data-hook': '' }
-        : { ...rest, ref: dataRef, 'data-hook': 'wsr-input' }),
+        ? {
+            ...rest,
+            'data-ref': dataRef,
+            'data-hook': 'wsr-custom-input',
+          }
+        : {
+            ...rest,
+            ref: dataRef,
+            'data-hook': 'wsr-input',
+          }),
     };
-
-    return React.cloneElement(
-      CustomInputComponent ? <CustomInputComponent /> : <input />,
-      inputProps,
+    const inputElement = CustomInputComponent ? (
+      <CustomInputComponent />
+    ) : (
+      <input />
     );
+
+    return React.cloneElement(inputElement, inputProps);
   };
 }
 

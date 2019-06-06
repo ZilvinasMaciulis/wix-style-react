@@ -1,9 +1,10 @@
+import React from 'react';
 import classNames from 'classnames';
 import defaultTo from 'lodash/defaultTo';
 import isEqual from 'lodash/isEqual';
 import sortBy from 'lodash/sortBy';
 import { allValidators, extendPropTypes } from '../utils/propTypes';
-
+import Input from '../Input/Input';
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import styles from './Dropdown.scss';
 
@@ -102,10 +103,14 @@ class Dropdown extends InputWithOptions {
   }
 
   inputAdditionalProps() {
+    const inputDataHook = 'dropdown--input';
+
     return {
       readOnly: false,
       disableEditing: true,
       value: this.state.value,
+      inputElement: <Input dataHook={inputDataHook} />,
+      dataHook: inputDataHook,
     };
   }
 

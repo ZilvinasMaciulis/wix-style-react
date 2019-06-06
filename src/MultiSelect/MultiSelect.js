@@ -51,7 +51,7 @@ class MultiSelect extends InputWithOptions {
   }
 
   inputAdditionalProps() {
-    const customInputDataHook = 'multiselect--input';
+    const inputDataHook = 'multiselect--input';
 
     return {
       readOnly: false,
@@ -61,13 +61,13 @@ class MultiSelect extends InputWithOptions {
           onReorder={this.props.onReorder}
           maxNumRows={this.props.maxNumRows}
           mode={this.props.mode}
-          dataHook={customInputDataHook}
+          dataHook={inputDataHook}
         />
       ),
       onKeyDown: this.onKeyDown,
       delimiters: this.props.delimiters,
       onPaste: this.onPaste,
-      dataHook: customInputDataHook,
+      dataHook: inputDataHook,
     };
   }
 

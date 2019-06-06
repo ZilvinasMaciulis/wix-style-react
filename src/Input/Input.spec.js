@@ -19,9 +19,9 @@ describe('Input', () => {
     runTests(createRendererWithDriver(inputDriverFactory));
   });
 
-  describe('[async]', () => {
-    runTests(createRendererWithUniDriver(testkit));
-  });
+  // describe('[async]', () => {
+  //   runTests(createRendererWithUniDriver(testkit));
+  // });
 
   function runTests(render) {
     afterEach(() => {
@@ -922,17 +922,16 @@ describe('Input', () => {
 
     describe('input render', () => {
       it('should render customized input', async () => {
-        const className = 'foo';
-        const customInput = props => {
-          return <input {...props} className={className} />;
-        };
+        const customInput = props => <input {...props} className={'foo'} />;
         const { driver } = render(<Input customInput={customInput} />);
-        expect(await driver.isCustomInput()).toEqual(true);
+
+        const isCustomInput = await driver.isCustomInput();
+        expect(isCustomInput).toEqual(true);
       });
 
       it('should render input html by default', async () => {
         const { driver } = render(<Input />);
-        expect(await driver.isCustomInput()).toEqual(false);
+        expect(driver.isCustomInput()).toEqual(false);
       });
     });
   }

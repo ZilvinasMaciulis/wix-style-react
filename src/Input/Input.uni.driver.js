@@ -31,9 +31,7 @@ export const testkit = base => {
     clickCustomAffix: async () =>
       await base.$(`[data-hook="custom-affix"]`).click(),
     isMenuArrowLast: async () => {
-      const selector = `.${styles.suffixes} .${styles.suffix}:last-child > .${
-        styles.menuArrow
-      }`;
+      const selector = `.${styles.suffixes} .${styles.suffix}:last-child > .${styles.menuArrow}`;
       return (await base.$$(selector).count()) === 1;
     },
     hasSuffixesClass: async () =>
@@ -61,8 +59,10 @@ export const testkit = base => {
       return await ReactBase(unitNode).textContent();
     },
     getTabIndex: async () => await reactBaseInput.tabIndex(),
-    isCustomInput: async () =>
-      (await input.attr('data-hook')) === 'wsr-custom-input',
+    isCustomInput: async () => {
+      const inputDataHook = await input.attr('data-hook');
+      return inputDataHook === 'wsr-custom-input';
+    },
     getReadOnly: async () => await reactBaseInput.readOnly(),
     getDisabled: async () => await reactBaseInput.disabled(),
     getTextOverflow: async () =>

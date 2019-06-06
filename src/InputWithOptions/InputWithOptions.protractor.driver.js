@@ -5,9 +5,8 @@ const driverFactory = component => {
   const dropdownLayoutDriver = dropdownLayoutDriverFactory(
     component.$('[data-hook="dropdown-layout-wrapper"]'),
   );
-  const inputDriver = inputDriverFactory(
-    component.$(`[data-hook="input-with-options--input"]`),
-  );
+
+  const inputDriver = inputDriverFactory(component.$('[data-input-parent]'));
 
   const clickInput = () => inputDriver.click();
 

@@ -5,7 +5,6 @@ const editableRowDriverFactory = ({ element, eventTrigger }) => {
 
   const inputDriver = inputDriverFactory({
     element: find('edit-row-input'),
-    wrapper: element,
   });
 
   const approveButton = find('edit-row-approve-button');

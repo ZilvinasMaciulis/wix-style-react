@@ -1,10 +1,10 @@
 import inputDriverFacory from './Input.protractor.driver';
 
-export const inputDataHook = 'wsr-input';
+export const inputDataHookSelector = `[data-hook="wsr-input"], [data-hook="wsr-custom-input"]`;
 
 const inputPrivateDriverFactory = component => {
   const inputDriver = inputDriverFacory(component);
-  const input = inputDriver.element().$(`[data-hook="${inputDataHook}"]`);
+  const input = component.$(inputDataHookSelector);
 
   return {
     ...inputDriver,

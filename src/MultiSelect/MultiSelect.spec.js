@@ -97,7 +97,7 @@ describe('MultiSelect', () => {
     expect(driver.isEditable()).toBe(false);
   });
 
-  it('should render custom input as the input element', () => {
+  it('should render custom input as the input element', async () => {
     const { inputDriver } = createDriver(<MultiSelect options={options} />);
     expect(inputDriver.isCustomInput()).toEqual(true);
   });

@@ -74,10 +74,8 @@ class InputWithOptions extends WixComponent {
   }
 
   renderInput() {
-    const { customInput } = this.props;
-    const inputAdditionalProps = this.inputAdditionalProps() || {
-      inputElement: <Input />,
-    };
+    const inputAdditionalProps = this.inputAdditionalProps() || {};
+
     const inputProps = Object.assign(
       omit(
         Object.keys(DropdownLayout.propTypes).concat([
@@ -87,13 +85,17 @@ class InputWithOptions extends WixComponent {
         ]),
         this.props,
       ),
+      {
+        inputElement: <Input />,
+        dataHook: 'input-with-options--inputElement',
+      },
       inputAdditionalProps,
     );
-
+    // eslint-no-console
+    // console.log('InputWithOptions:', {
+    //  renderInputDataHook: inputProps.dataHook,
+    //});
     const inputElement = inputProps.inputElement;
-    const dataHook = customInput
-      ? inputProps.dataHook
-      : 'input-with-options--input';
 
     return React.cloneElement(inputElement, {
       menuArrow: !this.props.magnifyingGlass,
@@ -103,7 +105,7 @@ class InputWithOptions extends WixComponent {
         inputAdditionalProps && inputAdditionalProps.onKeyDown,
         this._onKeyDown,
       ),
-      dataHook,
+      dataHook: inputProps.dataHook,
       theme: this.props.theme,
       onChange: this._onChange,
       onInputClicked: this._onInputClicked,

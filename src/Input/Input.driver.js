@@ -80,9 +80,7 @@ const inputDriverFactory = ({ element }) => {
       !!element.querySelector(`.${styles.suffix} ${style}`),
     isMenuArrowLast: () =>
       element.querySelectorAll(
-        `.${styles.suffixes} .${styles.suffix}:last-child > .${
-          styles.menuArrow
-        }`,
+        `.${styles.suffixes} .${styles.suffix}:last-child > .${styles.menuArrow}`,
       ).length === 1,
     hasExclamation: () => !!element.querySelector(`.${styles.exclamation}`),
     isNarrowError: () => !!element.querySelector(`.${styles.narrow}`),
@@ -115,9 +113,7 @@ const inputDriverFactory = ({ element }) => {
       !element.classList.contains(styles.noRightBorderRadius),
     hasLeftBorderRadius: () =>
       !element.classList.contains(styles.noLeftBorderRadius),
-    isCustomInput: () => {
-      return input.getAttribute('data-hook') === 'wsr-custom-input';
-    },
+    isCustomInput: () => input.getAttribute('data-hook') === 'wsr-custom-input',
   };
 
   return driver;

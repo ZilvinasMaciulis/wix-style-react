@@ -61,6 +61,7 @@ describe('InputWithOptions', () => {
       driver = protractorTestkitFactoryCreator(inputWithOptionsTestkitFactory)({
         dataHook: insideFormStorySettings.dataHook,
       });
+
       await waitForVisibilityOf(
         driver.element(),
         `Cant find ${insideFormStorySettings.dataHook}`,
@@ -72,7 +73,7 @@ describe('InputWithOptions', () => {
       await driver.selectOptionAt(0);
       await driver.pressEnter();
 
-      await sleep(100);
+      await sleep(500);
       const wasFormSubmitted =
         $('[data-hook="was-submitted"]').getText() === 'yes';
 

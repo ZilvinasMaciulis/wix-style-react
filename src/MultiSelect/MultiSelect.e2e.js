@@ -215,7 +215,7 @@ describe('MultiSelect - Focus behaviour', () => {
 
   it('should move out focus of multiselect when pressing tab without any selection', async () => {
     await focusOnMultiSelect();
-
+    //await browser.sleep(200000);
     await pressTab();
     expect(await driver.isFocused()).toEqual(false);
     expect(await driver.isOptionsShown()).toEqual(false);
