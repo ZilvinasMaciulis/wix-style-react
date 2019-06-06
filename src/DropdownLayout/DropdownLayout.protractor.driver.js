@@ -34,6 +34,7 @@ const driverFactory = component => {
         .mouseMove(item)
         .perform();
     },
+    selectOptionAt: index => getDropdownItemElement(index).click(),
   };
 };
 

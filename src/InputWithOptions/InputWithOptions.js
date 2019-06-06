@@ -74,7 +74,10 @@ class InputWithOptions extends WixComponent {
   }
 
   renderInput() {
-    const inputAdditionalProps = this.inputAdditionalProps();
+    const { customInput } = this.props;
+    const inputAdditionalProps = this.inputAdditionalProps() || {
+      inputElement: <Input />,
+    };
     const inputProps = Object.assign(
       omit(
         Object.keys(DropdownLayout.propTypes).concat([
@@ -87,7 +90,11 @@ class InputWithOptions extends WixComponent {
       inputAdditionalProps,
     );
 
-    const { inputElement } = inputProps;
+    const inputElement = inputProps.inputElement;
+    const dataHook = customInput
+      ? inputProps.dataHook
+      : 'input-with-options--input';
+
     return React.cloneElement(inputElement, {
       menuArrow: !this.props.magnifyingGlass,
       ref: input => (this.input = input),
@@ -96,6 +103,7 @@ class InputWithOptions extends WixComponent {
         inputAdditionalProps && inputAdditionalProps.onKeyDown,
         this._onKeyDown,
       ),
+      dataHook,
       theme: this.props.theme,
       onChange: this._onChange,
       onInputClicked: this._onInputClicked,
@@ -171,11 +179,7 @@ class InputWithOptions extends WixComponent {
     return (
       <div>
         {dropDirectionUp ? this._renderDropdownLayout() : null}
-        <div
-          data-input-parent
-          className={this.inputClasses()}
-          data-hook="input-with-options--input"
-        >
+        <div data-input-parent className={this.inputClasses()}>
           {this.renderInput()}
         </div>
         {!dropDirectionUp ? this._renderDropdownLayout() : null}

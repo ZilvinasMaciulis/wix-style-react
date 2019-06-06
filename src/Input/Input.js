@@ -197,7 +197,6 @@ class Input extends Component {
       min,
       max,
       step,
-      'data-hook': 'wsr-input',
       style: { textOverflow },
       dataRef: this.extractRef,
       className: inputClassNames,
@@ -403,10 +402,13 @@ class Input extends Component {
 
   _renderInput = props => {
     const { customInput: CustomInputComponent, dataRef, ...rest } = props;
+
+    const { dataHook } = this.props;
+
     const inputProps = {
       ...(CustomInputComponent
-        ? { 'data-ref': dataRef, ...rest, 'data-hook': 'wsr-custom-input' }
-        : { ref: dataRef, ...rest }),
+        ? { ...rest, 'data-ref': dataRef, 'data-hook': '' }
+        : { ...rest, ref: dataRef, 'data-hook': 'wsr-input' }),
     };
 
     return React.cloneElement(

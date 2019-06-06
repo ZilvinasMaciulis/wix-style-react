@@ -1,8 +1,8 @@
 import { isFocused } from 'wix-ui-test-utils/protractor';
+import { inputDataHook } from './input.private.protractor.driver';
 
 const inputDriverFactory = component => {
-  // selector doesn't use data-hook since Input consumer can provide his own customInput
-  const input = component.$('input');
+  const input = component.$(`[data-hook="${inputDataHook}"]`);
   const clearButton = component.$('[data-hook="input-clear-button"]');
 
   return {
@@ -11,8 +11,8 @@ const inputDriverFactory = component => {
     getText: () => input.getAttribute('value'),
     hasClearButton: () => clearButton.isPresent(),
     clickClear: () => clearButton.isPresent() && clearButton.click(),
-    click: () => input.click(),
-    isFocused: () => isFocused(input),
+    click: async () => await input.click(),
+    isFocused: async () => isFocused(input),
   };
 };
 

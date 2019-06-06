@@ -1,5 +1,5 @@
 import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.protractor.driver';
-import inputDriverFactory from '../Input/Input.protractor.driver';
+import inputDriverFactory from '../Input/Input.private.protractor.driver';
 
 const driverFactory = component => {
   const dropdownLayoutDriver = dropdownLayoutDriverFactory(
@@ -9,9 +9,11 @@ const driverFactory = component => {
     component.$(`[data-hook="input-with-options--input"]`),
   );
 
+  const clickInput = () => inputDriver.click();
+
   return {
     ...dropdownLayoutDriver,
-    click: () => inputDriver.click(),
+    click: () => clickInput(),
     getInput: () => inputDriver.element(),
     getInputText: () => inputDriver.getText(),
     isFocused: () => inputDriver.isFocused(),
@@ -19,6 +21,11 @@ const driverFactory = component => {
     /** Check wether the options dropdown is open */
     isOptionsShown: () => dropdownLayoutDriver.getDropdown().isDisplayed(),
     enterText: text => inputDriver.enterText(text),
+    selectOptionAt: async index => {
+      await clickInput();
+      await dropdownLayoutDriver.selectOptionAt(index);
+    },
+    pressEnter: () => inputDriver.pressEnter(),
   };
 };
 

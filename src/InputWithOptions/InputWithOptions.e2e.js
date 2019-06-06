@@ -1,4 +1,4 @@
-import inputWithOptionsTestkitFactory from './InputWithOptions.private.protractor.driver';
+import inputWithOptionsTestkitFactory from './InputWithOptions.protractor.driver';
 import { $, browser } from 'protractor';
 import {
   isFocused,
@@ -69,7 +69,7 @@ describe('InputWithOptions', () => {
 
     it('should NOT submit the form on Enter key press', async () => {
       await driver.click();
-      await driver.selectItemById('0');
+      await driver.selectOptionAt(0);
       await driver.pressEnter();
 
       await sleep(100);
