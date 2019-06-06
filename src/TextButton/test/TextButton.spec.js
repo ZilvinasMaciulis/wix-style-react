@@ -1,7 +1,10 @@
 import React from 'react';
-import { createRendererWithUniDriver, cleanup } from '../../test/utils/react';
-import { textButtonDriverFactory } from './TextButton.uni.driver';
-import TextButton from '.';
+import {
+  createRendererWithUniDriver,
+  cleanup,
+} from '../../../test/utils/react/index';
+import { textButtonDriverFactory } from '../TextButton.uni.driver';
+import TextButton from '../index';
 
 describe('TextButton', () => {
   afterEach(() => cleanup());

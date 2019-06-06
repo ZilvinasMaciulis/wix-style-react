@@ -5,8 +5,8 @@ import { storiesOf } from '@storybook/react';
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
 import { storySettings, testStories } from './storySettings';
 
-import TextButton from '..';
-import { Layout, Cell } from '../../Layout';
+import TextButton from '../index';
+import { Layout, Cell } from '../../Layout/index';
 import AddChannel from '../../new-icons/AddChannel';
 
 const category = getTestStoryKind(storySettings);

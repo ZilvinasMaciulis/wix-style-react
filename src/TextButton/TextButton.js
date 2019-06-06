@@ -28,7 +28,7 @@ class TextButton extends Component {
     /** Weight of TextButton content */
     weight: oneOf(['thin', 'normal']),
     /** Size of TextButton content */
-    size: oneOf(['small', 'medium']),
+    size: oneOf(['tiny', 'small', 'medium']),
     /** Click event handler  */
     onClick: func,
     /** Element based icon (svg, image etc.) */

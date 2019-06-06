@@ -33,7 +33,10 @@ export const affixes = `
 `;
 
 export const size = `
-<Layout cols={2} gap={0} justifyItems="center"  alignItems="center">
+<Layout cols={3} gap={0} justifyItems="center"  alignItems="center">
+  <TextButton size="tiny">
+    tiny
+  </TextButton>
   <TextButton size="small">
     small
   </TextButton>

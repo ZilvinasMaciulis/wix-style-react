@@ -15,7 +15,7 @@ import {
 
 import TextButton from '..';
 import { Layout } from '../../Layout';
-import { storySettings } from './storySettings';
+import { storySettings } from '../test/storySettings';
 import icons from '../../../stories/utils/icons-for-story';
 import { baseScope } from '../../../stories/utils/LiveCodeExample';
 import testkit from '!raw-loader!./testkit.md';
@@ -98,7 +98,8 @@ export default {
               },
               {
                 title: 'Size',
-                text: 'This action supports two sizes – small and medium.',
+                text:
+                  'This action supports sizes – `tiny`, `small` and `medium`.',
                 source: examples.size,
               },
               {
