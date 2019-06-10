@@ -1,9 +1,13 @@
 import React from 'react';
-import { createRendererWithUniDriver, cleanup } from '../../test/utils/react';
-import { iconButtonPrivateDriverFactory } from './IconButton.private.uni.driver';
-import IconButton from '.';
-
-import Add from 'wix-ui-icons-common/Add';
+import {
+  createRendererWithUniDriver,
+  cleanup,
+} from '../../../test/utils/react/index';
+import { iconButtonPrivateDriverFactory } from '../IconButton.private.uni.driver';
+import IconButton from '../index';
+import More from '../../new-icons/More';
+import MoreSmall from '../../new-icons/MoreSmall';
+import { dataHooks } from './storySettings';
 
 describe('IconButton', () => {
   afterEach(() => cleanup());
@@ -14,27 +18,28 @@ describe('IconButton', () => {
     expect(IconButton.displayName).toEqual('IconButton');
   });
 
-  describe('Icon size', () => {
-    const dataHook = 'iconbutton-icon';
+  describe('Icon size ', () => {
+    const dataHook = dataHooks.iconOfIconButton;
 
-    it('should have size 24px', async () => {
-      const { driver } = render(
-        <IconButton as="a">
-          <Add data-hook={dataHook} />
-        </IconButton>,
-      );
+    it.each(['tiny', 'small'])(
+      'should be 18px when given size- %s',
+      async size => {
+        const props = { size, children: <MoreSmall data-hook={dataHook} /> };
+        const { driver } = render(<IconButton {...props} />);
 
-      expect(await driver.getIconSize()).toEqual('24px');
-    });
+        expect(await driver.getIconSize()).toEqual('18px');
+      },
+    );
 
-    it('given size small should have size 18px', async () => {
-      const { driver } = render(
-        <IconButton size="small">
-          <Add data-hook={dataHook} />
-        </IconButton>,
-      );
-      expect(await driver.getIconSize()).toEqual('18px');
-    });
+    it.each(['medium', 'large'])(
+      'should be 24px when given size- %s',
+      async size => {
+        const props = { size, children: <More data-hook={dataHook} /> };
+        const { driver } = render(<IconButton {...props} />);
+
+        expect(await driver.getIconSize()).toEqual('24px');
+      },
+    );
 
     describe(`'as' prop`, () => {
       const Link = ({ children }) => <a>{children}</a>;

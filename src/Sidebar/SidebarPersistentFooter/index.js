@@ -1,0 +1,1 @@
+export { SidebarPersistentFooter } from './SidebarPersistentFooter';

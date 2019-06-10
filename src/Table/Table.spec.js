@@ -347,6 +347,19 @@ describe('Table', () => {
         expect(driver.getBulkSelectionState() === 'NONE').toBeTruthy();
       });
 
+      it('should uncheck bulk-selection checkbox when deselectRowsByDefault', () => {
+        const selectedIds = secondSelected();
+        const driver = createDriver(
+          <Table
+            {...defaultProps}
+            deselectRowsByDefault
+            selectedIds={selectedIds}
+          />,
+        );
+        driver.clickBulkSelectionCheckbox();
+        expect(driver.getBulkSelectionState() === 'NONE').toBeTruthy();
+      });
+
       it('should show partial in bulk-selection checkbox when row unselected given all rows selected', () => {
         const selectedIds = allSelected();
         const driver = createDriver(

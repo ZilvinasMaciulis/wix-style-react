@@ -1,0 +1,1 @@
+export { SidebarPersistentHeader } from './SidebarPersistentHeader';

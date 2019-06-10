@@ -3,6 +3,7 @@ import { ButtonNext } from 'wix-ui-core/button-next';
 import cx from 'classnames';
 import { iconButton } from 'wix-ui-core/themes/backoffice';
 import { oneOfType, string, node, oneOf, object, bool, func } from 'prop-types';
+import { iconButtonSizes } from './constants';
 
 class IconButton extends Component {
   static displayName = 'IconButton';
@@ -19,7 +20,7 @@ class IconButton extends Component {
     /** Button priority */
     priority: oneOf(['primary', 'secondary']),
     /** Button size */
-    size: oneOf(['small', 'medium']),
+    size: oneOf(['tiny', 'small', 'medium', 'large']),
     /** Click event handler  */
     onClick: func,
     /** Applies disabled styles */
@@ -48,7 +49,7 @@ class IconButton extends Component {
     } = this.props;
 
     const classNames = cx(className, iconButton(skin, priority, size));
-    const childSize = size === 'small' ? '18px' : '24px';
+    const childSize = iconButtonSizes[size].px;
 
     return (
       <ButtonNext

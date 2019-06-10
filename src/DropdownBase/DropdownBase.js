@@ -77,6 +77,9 @@ class DropdownBase extends React.PureComponent {
     /** The `id` of the selected option in the list */
     selectedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
+    /** Dropdown container overflow value */
+    overflow: PropTypes.string,
+
     /** Dropdown container tabindex value */
     tabIndex: PropTypes.string,
 
@@ -310,6 +313,7 @@ class DropdownBase extends React.PureComponent {
       fixed,
       flip,
       tabIndex,
+      overflow,
     } = this.props;
 
     const { open, selectedId } = this.state;
@@ -357,6 +361,7 @@ class DropdownBase extends React.PureComponent {
               tabIndex={tabIndex}
               inContainer
               visible
+              overflow={overflow}
             />
           </div>
         </Popover.Content>

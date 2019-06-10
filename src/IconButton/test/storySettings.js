@@ -11,3 +11,7 @@ export const testStories = {
   ICONBUTTON_SIZES: 'IconButton sizes',
   ICONBUTTON_AS: 'IconButton as',
 };
+
+export const dataHooks = {
+  iconOfIconButton: 'iconbutton-icon',
+};

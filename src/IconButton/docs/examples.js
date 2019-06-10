@@ -46,12 +46,18 @@ export const priority = `
 `;
 
 export const size = `
-<Layout cols={2} gap={0} justifyItems="center">
-  <IconButton>
-    <Icons.More />
+<Layout cols={4} gap={0} justifyItems="center">
+  <IconButton size="tiny">
+    <Icons.MoreSmall />
   </IconButton>
   <IconButton size="small">
     <Icons.MoreSmall />
+  </IconButton>
+  <IconButton>
+    <Icons.More />
+  </IconButton>
+  <IconButton size="large">
+    <Icons.More />
   </IconButton>
 </Layout>
 `;

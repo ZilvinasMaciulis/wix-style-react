@@ -1,6 +1,6 @@
-import { eyesItInstance } from '../../test/utils/eyes-it';
-import { createTestStoryUrl } from '../../test/utils/storybook-helpers';
-import { storySettings, testStories } from './docs/storySettings';
+import { eyesItInstance } from '../../../test/utils/eyes-it';
+import { createTestStoryUrl } from '../../../test/utils/storybook-helpers';
+import { storySettings, testStories } from './storySettings';
 
 describe('IconButton', () => {
   const testStoryUrl = testName =>

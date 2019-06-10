@@ -23,6 +23,7 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
     toggleSelectionById,
     isSelected,
     disabled,
+    deselectRowsByDefault,
   }) => {
     return {
       title: (
@@ -31,7 +32,7 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
           checked={bulkSelectionState === BulkSelectionState.ALL}
           indeterminate={bulkSelectionState === BulkSelectionState.SOME}
           disabled={disabled}
-          onChange={() => toggleAll()}
+          onChange={() => toggleAll(deselectRowsByDefault)}
         />
       ),
       render: (row, rowNum) => {
@@ -116,6 +117,7 @@ export class Table extends React.Component {
           <BulkSelection
             ref={_ref => (this.bulkSelection = _ref)}
             selectedIds={this.props.selectedIds}
+            deselectRowsByDefault={this.props.deselectRowsByDefault}
             disabled={this.props.selectionDisabled}
             allIds={this.props.data.map((rowData, rowIndex) =>
               defaultTo(rowData.id, rowIndex),
@@ -223,6 +225,8 @@ Table.propTypes = {
   ]),
   /** Is selection disabled for the table */
   selectionDisabled: PropTypes.bool,
+  /** Changes the default row selection behaviour. instead of SOME -> ALL, table now selects SOME -> NONE */
+  deselectRowsByDefault: PropTypes.bool,
   /** The width of the fixed table. Can be in percentages or pixels. */
   width: PropTypes.string,
   /**

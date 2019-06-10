@@ -144,7 +144,6 @@ module.exports = {
 
   EditableRow: {
     testkitPath: '../src/EditableSelector/EditableRow/EditableRow.driver',
-    unidriver: true,
     skipSanityTest: true,
   },
 
@@ -283,5 +282,9 @@ module.exports = {
   Swatches: {
     unidriver: true,
     testkitPath: '../src/Swatches/Swatches.uni.driver',
+  },
+  Sidebar: {
+    unidriver: true,
+    testkitPath: '../src/Sidebar/Sidebar.uni.driver',
   },
 };
