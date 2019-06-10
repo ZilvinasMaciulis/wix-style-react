@@ -222,7 +222,7 @@
     "wix-animations": "^1.0.276",
     "wix-eventually": "^2.2.0",
     "wix-ui-backoffice": "^1.0.339",
-    "wix-ui-core": "^2.0.120",
+    "wix-ui-core": "^2.0.128",
     "wix-ui-icons-common": "^2.0.9",
     "wix-ui-test-utils": "^1.0.151"
   },
