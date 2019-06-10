@@ -88,43 +88,6 @@ const tests = [
     ],
   },
   {
-    describe: 'paddingSize',
-    its: [
-      {
-        it: 'Text Size small & Padding Size small',
-        props: {
-          paddingSize: 'small',
-          size: 'small',
-          prefixIcon: <Edit />,
-        },
-      },
-      {
-        it: 'Text Size medium & Padding Size small',
-        props: {
-          paddingSize: 'small',
-          size: 'medium',
-          prefixIcon: <Edit />,
-        },
-      },
-      {
-        it: 'Text Size medium & Padding Size medium',
-        props: {
-          paddingSize: 'medium',
-          size: 'medium',
-          prefixIcon: <Edit />,
-        },
-      },
-      {
-        it: 'Text Size small & Padding Size medium',
-        props: {
-          paddingSize: 'medium',
-          size: 'small',
-          prefixIcon: <Edit />,
-        },
-      },
-    ],
-  },
-  {
     describe: 'as',
     its: [
       {

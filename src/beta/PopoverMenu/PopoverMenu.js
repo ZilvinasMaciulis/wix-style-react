@@ -5,19 +5,15 @@ import DropdownBase from '../../DropdownBase';
 import { placements } from '../../Popover';
 import styles from './PopoverMenu.st.css';
 
-import { textSizeToPaddingMap } from '../../ListItemAction/ListItemAction';
-
 /** PopoverMenu */
 class PopoverMenu extends React.PureComponent {
   static displayName = 'PopoverMenu';
 
   static MenuItem = () => ({});
 
-  static Divider = props => {
-    const { textSize } = props;
-    const padding = textSizeToPaddingMap[textSize || 'medium']['small'];
+  static Divider = () => {
     return (
-      <div style={{ padding: `${padding} 24px ${padding} 18px` }}>
+      <div style={{ padding: `6px 24px 6px 18px` }}>
         <div className={styles.divider} />
       </div>
     );
@@ -115,14 +111,13 @@ class PopoverMenu extends React.PureComponent {
   };
 
   _buildOptions = children => {
-    const { textSize } = this.props;
     return children.map((child, id) => {
       const displayName = child.type && child.type.displayName;
 
       if (displayName && displayName === 'PopoverMenu.Divider') {
         return {
           id: id,
-          value: <PopoverMenu.Divider textSize={textSize} />,
+          value: child,
           divider: true,
           overrideStyle: true,
         };

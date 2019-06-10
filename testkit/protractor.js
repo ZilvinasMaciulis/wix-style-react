@@ -512,6 +512,12 @@ export const subheaderTestkitFactory = protractorUniTestkitFactoryCreator(
   cardSubheaderDriverFactory,
 );
 
+import { sidebarDriverFactory } from '../src/Sidebar/Sidebar.uni.driver';
+
+export const sidebarTestkitFactory = protractorUniTestkitFactoryCreator(
+  sidebarDriverFactory,
+);
+
 import { swatchesDriverFactory } from '../src/Swatches/Swatches.uni.driver';
 
 export const swatchesTestkitFactory = protractorUniTestkitFactoryCreator(

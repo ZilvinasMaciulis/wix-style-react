@@ -16,10 +16,38 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<PageHeader/>` Testkit - expose puppeteer testkit [#3536](https://github.com/wix/wix-style-react/pull/3536)
+- `<ListItemAction/>` - add classname prop for extensibility [#3543](https://github.com/wix/wix-style-react/pull/3543)
+
+### Docs
+- `<Table/>` - explain compound components (appears under `WIP`) [#3538](https://github.com/wix/wix-style-react/pull/3538)
+- `<Table/>` - document missing props (appears under `WIP`) [#3546](https://github.com/wix/wix-style-react/pull/3546)
+
+## 6.26.0 - 2019-06-06
+
+### Added
+- `<IconButton/>`- adding`tiny` & `large` sizes [#3520](https://github.com/wix/wix-style-react/pull/3520)
+- `<Sidebar/>` - add new component [#3386](https://github.com/wix/wix-style-react/pull/3386)
+- `<DropdownBase/> & <DropdownLayout/>`- support overflow prop [#3541](https://github.com/wix/wix-style-react/pull/3541)
+
+### Fixed
+- `<DropdownLayout/>` fix `onOptionMarked` not called on default marked option [#3535](https://github.com/wix/wix-style-react/pull/3535)
+
+### Added
+- `<Table/>` - add `deselectRowsByDefault` prop [#3526](https://github.com/wix/wix-style-react/pull/3526)
+
 ### Changed
 
 - `<ListItemAction/> & listItemActionBuilder` - add props `as`, `tabIndex`. Support keyboard focusability. [#3519](https://github.com/wix/wix-style-react/pull/3519)
 - `<DropdownBase/>` - add tabindex to props list [#3523](https://github.com/wix/wix-style-react/pull/3523)
+- `<ListItemAction/>` - change focus style and add onKeyDown [#3525](https://github.com/wix/wix-style-react/pull/3525)
+- `<ListItemAction/>` - remove padding mapping and add prop `ref` [#3528](https://github.com/wix/wix-style-react/pull/3528)
+
+### Fixed
+
+- `<AddItem/>` - set type 'button' [#3527](https://github.com/wix/wix-style-react/pull/3527)
+- `<ListItemAction/>` - fix tabIndex typo, set default `as` prop to button [#3529](https://github.com/wix/wix-style-react/pull/3529)
 
 ## 6.25.1 - 2019-06-04
 

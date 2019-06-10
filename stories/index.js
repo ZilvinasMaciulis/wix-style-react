@@ -115,6 +115,7 @@ require('../src/RichTextInputArea/docs/index.story');
 require('../src/Search/docs/index.story');
 require('../src/SectionHelper/docs/index.story');
 require('../src/SegmentedToggle/docs/index.story');
+require('../src/Sidebar/docs/index.story');
 require('../src/Slider/docs/index.story');
 require('../src/SideMenu/docs');
 require('../src/SideMenu/docs/SideMenu');
@@ -142,6 +143,7 @@ require('../src/DragAndDrop/docs/DragAndDrop');
 require('../src/BadgeSelectItemBuilder/docs');
 require('../src/ContactItemBuilder/docs');
 require('../src/DateInput/docs/index.story');
+require('../src/Table/docs/improved-index.story');
 
 // Tests
 require('../src/Typography/test/TestStory');
@@ -151,8 +153,8 @@ require('../src/TimeInput/docs/testStory');
 require('../src/Page/docs/PageTestStories'); // Tests/2. Layout/2.5 + Page/
 require('../src/Page/docs/PageTestStoriesDeprecated'); // Tests/2. Layout/2.5 + Page/Deprecated
 require('../src/PageHeader/docs/PageHeaderTestStories'); // Tests/2. Layout/2.5 + PageHeader/
-require('../src/IconButton/docs/testStory'); // Tests/5. Button/5.2 IconButton
-require('../src/TextButton/test/testStory'); // Tests/5. Button/5.3 TextButton
+trequire('../src/TextButton/test/testStory'); // Tests/5. Button/5.3 TextButton
+require('../src/IconButton/test/testStory'); // Tests/5. Button/5.2 IconButton
 require('../src/CloseButton/docs/testStory'); // Tests/5. Button/5.4 CloseButton
 require('../src/Calendar/docs/CalendarTestStory'); // Tests/3. Inputs/3.13 Calendar
 require('../src/MultiSelect/docs/testStory'); // Tests/3. Inputs/3.8 Tags

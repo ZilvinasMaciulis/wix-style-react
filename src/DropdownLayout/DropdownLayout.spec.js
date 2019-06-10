@@ -9,6 +9,8 @@ import {
   cleanup,
   render as rawRender,
 } from '../../test/utils/react';
+import { mount } from 'enzyme';
+import { dropdownLayoutTestkitFactory } from '../../testkit/enzyme';
 
 describe('DropdownLayout', () => {
   describe('[sync]', () => {
@@ -839,6 +841,27 @@ describe('DropdownLayout', () => {
           <DropdownLayout options={initialOptions} markedOption={1} />,
         );
         expect(await driver.markedOption()).toBe('a 2');
+      });
+
+      it('should call onOptionMarked on default options', async () => {
+        const spyOnOptionMarked = jest.fn();
+        const dataHook = 'myDataHook';
+        const wrapper = mount(
+          <DropdownLayout
+            dataHook={dataHook}
+            options={[]}
+            markedOption
+            onOptionMarked={spyOnOptionMarked}
+          />,
+        );
+        const dropdownLayoutTestkit = dropdownLayoutTestkitFactory({
+          wrapper,
+          dataHook,
+        });
+
+        wrapper.setProps({ options: initialOptions });
+        expect(await dropdownLayoutTestkit.markedOption()).toBe('a 1');
+        expect(spyOnOptionMarked).toHaveBeenLastCalledWith(initialOptions[0]);
       });
     });
   }

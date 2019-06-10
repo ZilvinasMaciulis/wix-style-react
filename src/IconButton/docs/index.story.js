@@ -15,7 +15,7 @@ import {
 
 import IconButton from '..';
 import { Layout } from '../../Layout';
-import { storySettings } from './storySettings';
+import { storySettings } from '../test/storySettings';
 import icons from '../../../stories/utils/icons-for-story';
 import { baseScope } from '../../../stories/utils/LiveCodeExample';
 import testkit from '!raw-loader!./testkit.md';
@@ -105,7 +105,7 @@ export default {
               {
                 title: 'Size',
                 text:
-                  'Its size can be `small` or `medium`. Smaller layout container should contain small buttons. Icon should be set according to IconButton size. Small sized IconButton should use small icons, which ends with the Small prefix, while medium sized icon buttons should use the normal icons which has no prefix.',
+                  'Its size can be `tiny`, `small`, `medium` or `large`. Icon should be set according to IconButton size. Tiny & small sized icon buttons should use small icons, which ends with the Small prefix. Medium & large sized icon buttons should use normal icons, which has no prefix. Default size is `medium`',
                 source: examples.size,
               },
               {

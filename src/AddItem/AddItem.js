@@ -138,6 +138,7 @@ class AddItem extends Component {
         {...style('root', { theme }, this.props)}
         data-hook={dataHook}
         disabled={disabled}
+        type="button"
         onClick={onClick}
         onFocus={focusableOnFocus}
         onBlur={focusableOnBlur}

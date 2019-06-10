@@ -126,5 +126,10 @@ export {
   default as ListItemAction,
   listItemActionBuilder,
 } from './ListItemAction';
+export {
+  default as Sidebar,
+  SidebarContextConsumer,
+  SidebarItemContextConsumer,
+} from './Sidebar';
 export { default as Subheader } from './Card/Subheader';
 export { default as Swatches } from './Swatches';

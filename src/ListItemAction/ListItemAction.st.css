@@ -19,6 +19,7 @@
   -st-extends: Focusable;
 
   display: inline-flex;
+  padding: 6px 24px 6px 18px;
   width: 100%;
   align-items: flex-start;
 
@@ -36,7 +37,8 @@
 }
 
 .root:not(:disabled):focus-visible {
-  box-shadow: inset 0 0 0 3px value(F00);
+  background-color: value(B40);
+  box-shadow:inset 0 0 0 3px value(F00);
 }
 
 /** Skin standard */
@@ -56,7 +58,6 @@
 
 .root:skin(standard):not(:disabled):focus-visible {
   background-color: value(B10);
-  box-shadow: none;
 }
 
 .root:skin(standard):not(:disabled):focus-visible .text,

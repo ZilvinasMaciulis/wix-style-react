@@ -4,11 +4,6 @@ import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC'
 import styles from './ListItemAction.st.css';
 import Text from '../Text';
 
-export const textSizeToPaddingMap = {
-  small: { medium: '12px', small: '6px' },
-  medium: { medium: '9px', small: '3px' },
-};
-
 /** ListItemAction */
 class ListItemActionComponent extends React.PureComponent {
   static displayName = 'ListItemAction';
@@ -26,11 +21,11 @@ class ListItemActionComponent extends React.PureComponent {
     /** Text Size (small, medium) */
     size: PropTypes.oneOf(['small', 'medium']),
 
-    /** Padding size (small, medium) */
-    paddingSize: PropTypes.oneOf(['small', 'medium']),
-
     /** Prefix Icon */
     prefixIcon: PropTypes.node,
+
+    /** When present, it specifies that a button should automatically get focus when the page loads. */
+    autoFocus: PropTypes.bool,
 
     /** Title */
     title: PropTypes.string.isRequired,
@@ -66,17 +61,14 @@ class ListItemActionComponent extends React.PureComponent {
   };
 
   static defaultProps = {
-    as: 'div',
+    as: 'button',
     skin: 'standard',
     size: 'medium',
-    paddingSize: 'medium',
   };
 
   render() {
     const {
       dataHook,
-      size,
-      paddingSize,
       disabled,
       skin,
       prefixIcon,
@@ -85,19 +77,20 @@ class ListItemActionComponent extends React.PureComponent {
       focusableOnBlur,
       as: Component,
       tabIndex,
-      ...rest
+      onKeyDown,
+      autoFocus,
     } = this.props;
-    const padding = textSizeToPaddingMap[size][paddingSize];
+
     return (
       <Component
-        {...rest}
         {...styles('root', { skin, disabled }, this.props)}
         tabIndex={tabIndex}
+        autoFocus={autoFocus}
         onFocus={focusableOnFocus}
         onBlur={focusableOnBlur}
         type={Component === 'button' ? 'button' : undefined}
-        style={{ padding: `${padding} 24px ${padding} 18px` }}
         data-hook={dataHook}
+        onKeyDown={!disabled && onKeyDown}
         onClick={!disabled && onClick}
       >
         {prefixIcon && this._renderPrefix()}
@@ -114,20 +107,23 @@ export const listItemActionBuilder = ({
   prefixIcon,
   onClick,
   id,
-  paddingSize,
   disabled,
   skin,
   size,
   dataHook,
   as,
   tabIndex,
+  autoFocus,
+  className,
 }) => ({
   id,
   disabled,
   overrideStyle: true,
-  value: props => (
+  value: ({ ref: dropdownRef, ...props }) => (
     <ListItemAction
       {...props}
+      className={className}
+      autoFocus={autoFocus}
       tabIndex={tabIndex}
       as={as}
       onClick={onClick}
@@ -136,7 +132,6 @@ export const listItemActionBuilder = ({
       prefixIcon={prefixIcon}
       skin={skin}
       size={size}
-      paddingSize={paddingSize}
     />
   ),
 });

@@ -24,13 +24,14 @@ export const ChangeType = Object.freeze({
   SINGLE_TOGGLE: 'SINGLE_TOGGLE',
 });
 
-/** Helper for PropTypes for componenst which consume the BulkSelection context */
+/** Helper for PropTypes for component which consume the BulkSelection context */
 export const BulkSelectionContextPropTypes = {
   isSelected: func,
   selectedCount: number,
   getSelectedIds: func,
   bulkSelectionState: string,
   toggleSelectionById: func,
+  deselectRowsByDefault: bool,
   toggleAll: func,
   selectAll: func,
   deselectAll: func,
@@ -71,10 +72,10 @@ export class BulkSelection extends React.Component {
     }
   };
 
-  toggleBulkSelection = () => {
+  toggleBulkSelection = deselectRowsByDefault => {
     const bulkSelectionState = this.state.helpers.bulkSelectionState;
     if (bulkSelectionState === BulkSelectionState.SOME) {
-      this.toggleAll(true);
+      this.toggleAll(!deselectRowsByDefault);
     } else if (bulkSelectionState === BulkSelectionState.ALL) {
       this.toggleAll(false);
     } else {
@@ -128,7 +129,7 @@ export class BulkSelection extends React.Component {
     );
   };
   createHelpers(props) {
-    const { selectedIds, allIds } = props;
+    const { selectedIds, allIds, deselectRowsByDefault } = props;
     const totalCount = allIds.length;
     const selectedCount = selectedIds.length;
     const bulkSelectionState =
@@ -150,6 +151,8 @@ export class BulkSelection extends React.Component {
        * Possible values: ALL, SOME, NONE
        */
       bulkSelectionState,
+      /** Changes the default row selection behaviour. instead of SOME -> ALL, table now selects SOME -> NONE */
+      deselectRowsByDefault,
       disabled: this.props.disabled,
       // Modifiers
       /** Toggle the selection state (selected/not-selected) of an item by id */

@@ -218,6 +218,12 @@ export const errorIndicatorTestkitFactory = puppeteerUniTestkitFactoryCreator(
   errorIndicatorDriverFactory,
 );
 
+import { sidebarDriverFactory } from '../src/Sidebar/Sidebar.uni.driver';
+
+export const sidebarTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  sidebarDriverFactory,
+);
+
 import { ListItemActionDriverFactory } from '../src/ListItemAction/ListItemAction.uni.driver';
 
 export const ListItemActionTestkitFactory = puppeteerUniTestkitFactoryCreator(
@@ -234,4 +240,10 @@ import { swatchesDriverFactory } from '../src/Swatches/Swatches.uni.driver';
 
 export const swatchesTestkitFactory = puppeteerUniTestkitFactoryCreator(
   swatchesDriverFactory,
+);
+
+import { pageHeaderUniDriverFactory } from '../src/PageHeader/PageHeader.uni.driver';
+
+export const pageHeaderTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  pageHeaderUniDriverFactory,
 );

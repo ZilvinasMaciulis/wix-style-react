@@ -23,6 +23,7 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
     toggleSelectionById,
     isSelected,
     disabled,
+    deselectRowsByDefault,
   }) => {
     return {
       title: (
@@ -31,7 +32,7 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
           checked={bulkSelectionState === BulkSelectionState.ALL}
           indeterminate={bulkSelectionState === BulkSelectionState.SOME}
           disabled={disabled}
-          onChange={() => toggleAll()}
+          onChange={() => toggleAll(deselectRowsByDefault)}
         />
       ),
       render: (row, rowNum) => {
@@ -116,6 +117,7 @@ export class Table extends React.Component {
           <BulkSelection
             ref={_ref => (this.bulkSelection = _ref)}
             selectedIds={this.props.selectedIds}
+            deselectRowsByDefault={this.props.deselectRowsByDefault}
             disabled={this.props.selectionDisabled}
             allIds={this.props.data.map((rowData, rowIndex) =>
               defaultTo(rowData.id, rowIndex),
@@ -143,10 +145,48 @@ Table.defaultProps = {
 };
 
 Table.propTypes = {
+  /** Any wrapper element that eventually includes <Table.Content/> as a child */
   children: PropTypes.any,
+
+  /** Applied as data-hook HTML attribute that can be used in the tests */
   dataHook: PropTypes.string,
 
-  //DataTable Props
+  /** Called when row selection changes.
+   * Receives 2 arguments: `selectedIds` array, and a `change` object ( in this order).
+   * `selectedIds` is the updated selected ids.
+   * `change` object has a `type` property with the following possible values: 'ALL', 'NONE', 'SINGLE_TOGGLE'.
+   * In case of 'SINGLE_TOGGLE' the `change` object will also include an `id` prop with the item's id,
+   * and a `value` prop with the new boolean selection state of the item. */
+  onSelectionChanged: PropTypes.func,
+
+  /** Indicates wether to show a selection column (with checkboxes) */
+  showSelection: PropTypes.bool,
+
+  /** Array of selected row ids.
+   *  Ideally, id should be a property on the data row object.
+   *  If data objects do not have id property, then the data row's index would be used as an id. */
+  selectedIds: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.number),
+  ]),
+
+  /** Is selection disabled for the table */
+  selectionDisabled: PropTypes.bool,
+
+  /** Changes the default row selection behaviour. instead of SOME -> ALL, table now selects SOME -> NONE */
+  deselectRowsByDefault: PropTypes.bool,
+
+  /**
+   *  When false then Table would not create a `<div/>` wrapper around it's children.
+   *  Useful when using `<Table/>` to wrap a `<Page/>` component, in that case we use the `<Table/>` only as a context provider and it doesn't render anything to the DOM by itself.*/
+  withWrapper: PropTypes.bool,
+
+  /**
+   * A callback function called on each column title click. Signature `onSortClick(colData, colNum)`
+   */
+  onSortClick: PropTypes.func,
+
+  // The following props are derived directly from <DataTable/> component
   /** Allows to open multiple row details */
   allowMultiDetailsExpansion: PropTypes.bool,
   /** The data to display. (If data.id exists then it will be used as the React key value for each row, otherwise, the rowIndex will be used) */
@@ -186,7 +226,6 @@ Table.propTypes = {
   onMouseEnterRow: PropTypes.func,
   /** A callback method to be called on row mouse leave. Signature: `onMouseLeaveRow(rowData, rowNum)` */
   onMouseLeaveRow: PropTypes.func,
-
   /** Add scroll listeners to the window, or else, the component's parentNode. */
   useWindow: PropTypes.bool,
   /** Add scroll listeners to specified DOM Object. */
@@ -199,40 +238,18 @@ Table.propTypes = {
   rowDataHook: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   /** A class to apply to all table body rows */
   rowClass: PropTypes.string,
-
   /** Should the table show the header when data is empty */
   showHeaderWhenEmpty: PropTypes.bool,
-
-  // Table props
-
-  /** Called when row selection changes.
-   * Receives 2 arguments: `selectedIds` array, and a `change` object ( in this order).
-   * `selectedIds` is the updated selected ids.
-   * `change` object has a `type` property with the following possible values: 'ALL', 'NONE', 'SINGLE_TOGGLE'.
-   * In case of 'SINGLE_TOGGLE' the `change` object will also include an `id` prop with the item's id,
-   * and a `value` prop with the new boolean selection state of the item. */
-  onSelectionChanged: PropTypes.func,
-  /** Indicates wether to show a selection column (with checkboxes) */
-  showSelection: PropTypes.bool,
-  /** Array of selected row ids.
-   *  Idealy, id should be a property on the data row object.
-   *  If data objects do not have id property, then the data row's index would be used as an id. */
-  selectedIds: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.arrayOf(PropTypes.number),
-  ]),
-  /** Is selection disabled for the table */
-  selectionDisabled: PropTypes.bool,
+  /** A flag specifying weather to show a divider after the last row */
+  showLastRowDivider: PropTypes.bool,
+  /** ++EXPERIMENTAL++ Virtualize the table scrolling for long list items */
+  virtualized: PropTypes.bool,
+  /** ++EXPERIMENTAL++ Set virtualized table height */
+  virtualizedTableHeight: PropTypes.number,
+  /** ++EXPERIMENTAL++ Set virtualized table row height */
+  virtualizedLineHeight: PropTypes.number,
   /** The width of the fixed table. Can be in percentages or pixels. */
   width: PropTypes.string,
-  /**
-   *  When false then Table would not create a `<div/>` wrapper around it's children.
-   *  Useful when using `<Table/>` to wrap a `<Page/>` component, in that case we use the `<Table/>` only as a context provider and it doesn't render anything to the DOM by itself.*/
-  withWrapper: PropTypes.bool,
-  /**
-   * A callback function called on each column title click. Signature `onSortClick(colData, colNum)`
-   */
-  onSortClick: PropTypes.func,
 };
 
 // export default Table;

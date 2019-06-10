@@ -164,7 +164,7 @@ class FormField extends React.Component {
         tagName={'label'}
         data-hook="formfield-label"
         ellipsis={trimLongText}
-        style={{ display: 'block' }}  // allows the label to center vertically
+        style={{ display: 'block' }} // allows the label to center vertically
       >
         {label}
       </Text>
