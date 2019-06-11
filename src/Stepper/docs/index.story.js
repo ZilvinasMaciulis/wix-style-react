@@ -17,7 +17,7 @@ import SectionHelper from 'wix-style-react/SectionHelper';
 import { Layout, Cell } from 'wix-style-react/Layout';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../../stories/utils/allComponents';
+import allComponents from '../../../stories/utils/allComponents';
 
 import Stepper from '..';
 
@@ -78,9 +78,7 @@ export default {
           ]),
 
           columns([
-            importExample(
-              "import Stepper from 'wix-style-react/beta/Stepper';",
-            ),
+            importExample("import Stepper from 'wix-style-react/Stepper';"),
           ]),
 
           divider(),

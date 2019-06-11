@@ -189,4 +189,4 @@ require('../src/EditableTitle/docs/index.story');
 require('../src/beta/PopoverMenu/docs/index.story');
 
 // TODO: move to correct position
-require('../src/beta/Stepper/docs/index.story');
+require('../src/Stepper/docs/index.story');

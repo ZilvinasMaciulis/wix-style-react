@@ -4,5 +4,5 @@ import Registry from '@ui-autotools/registry';
 const metadata = Registry.getComponentMetadata(Stepper);
 
 metadata.exportedFrom({
-  path: 'src/beta/Stepper/Stepper.js',
+  path: 'src/Stepper/Stepper.js',
 });

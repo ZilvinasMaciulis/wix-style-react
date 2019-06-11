@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../Text';
-import styles from './Stepper.scss';
+import Text from '../Text';
+import styles from './Stepper.st.css';
 
 /** Stepper */
 class Stepper extends React.PureComponent {
