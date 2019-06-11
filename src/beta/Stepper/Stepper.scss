@@ -1,0 +1,14 @@
+.root {
+    display: flex;
+    overflow: hidden;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    padding-right: 6px;
+}
+
+.stepText {
+    width: 100px;
+}

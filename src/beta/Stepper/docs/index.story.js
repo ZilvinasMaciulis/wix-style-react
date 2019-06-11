@@ -22,7 +22,17 @@ import allComponents from '../../../../stories/utils/allComponents';
 import Stepper from '..';
 
 const code = config =>
-  baseCode({ components: { Stepper, ...allComponents }, ...config });
+  baseCode({ components: { Stepper, steps, ...allComponents }, ...config });
+
+const steps = [
+  { text: 'This is a long step name' },
+  { text: 'This is a long step name' },
+  { text: 'This is a long step name' },
+  { text: 'This is a long step name' },
+  { text: 'This is a long step name' },
+  { text: 'This is a long step name' },
+  { text: 'This is a long step name' },
+];
 
 export default {
   category: storySettings.category,
@@ -79,7 +89,11 @@ export default {
 
           code({
             title: 'Stepper',
-            source: '<Stepper/>',
+            compact: true,
+            source:
+              '<div style={{padding: "20px 20px", backgroundColor: "white"}}>' +
+              '<Stepper active={1} steps={steps}/>' +
+              '</div>',
           }),
         ],
       }),
