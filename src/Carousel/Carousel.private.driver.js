@@ -1,14 +1,12 @@
 import ReactTestUtils from 'react-dom/test-utils';
-import { iconButtonTestkitFactory } from 'wix-style-react/dist/testkit';
-
+import { iconButtonDriverFactory } from '../IconButton/IconButton.uni.driver';
 import { carouselDriverFactory as publicDriver } from './Carousel.driver';
 
 export default ({ element }) => {
   const arrowButtonDriver = direction =>
-    iconButtonTestkitFactory({
-      wrapper: element,
-      dataHook: `${direction}-button`,
-    });
+    iconButtonDriverFactory(
+      element.querySelector(`[data-hook="${direction}-button"]`),
+    );
 
   return {
     ...publicDriver({ element }),
