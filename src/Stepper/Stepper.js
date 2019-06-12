@@ -41,7 +41,7 @@ class Stepper extends React.PureComponent {
     const { dataHook, steps } = this.props;
 
     return (
-      <div className={styles.root} data-hook={dataHook}>
+      <div {...styles('root', {}, this.props)} data-hook={dataHook}>
         {steps.map((step, idx) => this._renderStep(step, idx))}
       </div>
     );
