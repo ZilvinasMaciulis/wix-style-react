@@ -2,7 +2,7 @@ import inputWithOptionsDriverFactory from '../InputWithOptions/InputWithOptions.
 import { inputDriverFactory } from '../../testkit/protractor';
 
 const multiSelectDriverFactory = component => {
-  const inputComponent = component.$(`[data-hook="multiselect--input"]`);
+  const inputComponent = component.$(`[data-hook="multiselect--inputElement"]`);
 
   return {
     ...inputWithOptionsDriverFactory(component),

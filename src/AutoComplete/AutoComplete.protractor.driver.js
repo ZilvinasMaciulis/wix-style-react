@@ -1,4 +1,4 @@
-import inputTestkitFactory from '../Input/Input.protractor.driver';
+import inputTestkitFactory from '../Input/Input.private.protractor.driver';
 
 const autoCompleteDriverFactory = component => {
   const inputElement = component.$('[data-hook="autocomplete--inputElement"]');
@@ -7,6 +7,7 @@ const autoCompleteDriverFactory = component => {
   return {
     click: () => inputDriver.click(),
     getInput: () => inputDriver.element(),
+    getNativeInput: () => inputDriver.getNativeInput(),
     getDropdown: () => component.$(`[data-hook="dropdown-layout-options"]`),
     getDropdownItem: index =>
       component

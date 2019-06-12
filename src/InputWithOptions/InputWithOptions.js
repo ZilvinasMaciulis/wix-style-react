@@ -91,10 +91,7 @@ class InputWithOptions extends WixComponent {
       },
       inputAdditionalProps,
     );
-    // eslint-no-console
-    // console.log('InputWithOptions:', {
-    //  renderInputDataHook: inputProps.dataHook,
-    //});
+
     const inputElement = inputProps.inputElement;
 
     return React.cloneElement(inputElement, {

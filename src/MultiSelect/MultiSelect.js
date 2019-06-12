@@ -51,7 +51,7 @@ class MultiSelect extends InputWithOptions {
   }
 
   inputAdditionalProps() {
-    const inputDataHook = 'multiselect--input';
+    const inputDataHook = 'multiselect--inputElement';
 
     return {
       readOnly: false,

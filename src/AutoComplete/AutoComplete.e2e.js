@@ -29,7 +29,7 @@ describe('AutoComplete', () => {
     });
     expect(await driver.getDropdownItemsCount()).toEqual(5);
 
-    await driver.getInput().sendKeys('first');
+    await driver.getNativeInput().sendKeys('first');
     expect(await driver.getDropdownItemsCount()).toEqual(1);
 
     expect(await driver.getDropdownItem(0)).toBe('First option');
@@ -44,6 +44,8 @@ describe('AutoComplete', () => {
     await driver.click();
     await driver.getDropdownItem(2).click();
 
-    expect(await driver.getInput().getAttribute('value')).toBe('Third option');
+    expect(await driver.getNativeInput().getAttribute('value')).toBe(
+      'Third option',
+    );
   });
 });

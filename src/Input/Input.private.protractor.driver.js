@@ -9,6 +9,7 @@ const inputPrivateDriverFactory = component => {
   return {
     ...inputDriver,
     pressEnter: () => input.sendKeys(protractor.Key.ENTER),
+    getNativeInput: () => input,
   };
 };
 
