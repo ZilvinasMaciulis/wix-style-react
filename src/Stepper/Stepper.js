@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../Text';
@@ -8,15 +9,17 @@ class Stepper extends React.PureComponent {
   static displayName = 'Stepper';
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
     dataHook: PropTypes.string,
+    /** Callback to be triggered on step click */
     onClick: PropTypes.func,
-    active: PropTypes.number.isRequired,
+    /** Id of the active step */
+    activeStep: PropTypes.number.isRequired,
+    /** Array of steps, each step should have at least text. If no status is passed, step's status is set to default  */
     steps: PropTypes.arrayOf(
       PropTypes.shape({
         text: PropTypes.string.isRequired,
-        error: PropTypes.bool,
-        disabled: PropTypes.bool,
-        completed: PropTypes.bool,
+        status: PropTypes.oneOf(['completed', 'disabled', 'default', 'error']),
       }),
     ).isRequired,
   };
@@ -25,6 +28,24 @@ class Stepper extends React.PureComponent {
     onClick: () => {},
     steps: [],
   };
+
+  constructor(props) {
+    super(props);
+
+    this._validateNumberOfSteps(props.steps);
+  }
+
+  componentDidUpdate() {
+    this._validateNumberOfSteps(this.props.steps);
+  }
+
+  _validateNumberOfSteps(steps) {
+    if (!steps || !steps.length || !steps.length < 2 || steps.length > 7) {
+      console.error(
+        'Warning: Failed prop: The prop `steps` in `Stepper` has to be an array in the size of 2 to 7.',
+      );
+    }
+  }
 
   _renderStep = (step, idx) => {
     return (
