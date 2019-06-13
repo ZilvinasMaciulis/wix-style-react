@@ -88,10 +88,9 @@ export default {
           code({
             title: 'Stepper',
             compact: true,
-            source:
-              '<div style={{padding: "20px 20px", backgroundColor: "white"}}>' +
-              '<Stepper active={1} steps={steps}/>' +
-              '</div>',
+            source: `<div style={{padding: "20px 20px", backgroundColor: "white"}}>
+              <Stepper active={1} steps={steps}/>
+              </div>`,
           }),
         ],
       }),

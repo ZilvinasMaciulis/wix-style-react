@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../Text';
+import * as Consts from './Consts';
 import styles from './Stepper.st.css';
 
 /** Stepper */
@@ -40,7 +41,12 @@ class Stepper extends React.PureComponent {
   }
 
   _validateNumberOfSteps(steps) {
-    if (!steps || !steps.length || !steps.length < 2 || steps.length > 7) {
+    if (
+      !steps ||
+      !steps.length ||
+      !steps.length < Consts.MIN_STEPS ||
+      steps.length > Consts.MAX_STEPS
+    ) {
       console.error(
         'Warning: Failed prop: The prop `steps` in `Stepper` has to be an array in the size of 2 to 7.',
       );
