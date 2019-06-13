@@ -146,9 +146,6 @@
   "FullTextView": {
     "path": "src/FullTextView"
   },
-  "GeneratedTestComponent": {
-    "path": "src/GeneratedTestComponent"
-  },
   "GenericModalLayout": {
     "path": "src/GenericModalLayout"
   },
@@ -289,6 +286,9 @@
   },
   "StatsWidget": {
     "path": "src/StatsWidget"
+  },
+  "Stepper": {
+    "path": "src/Stepper"
   },
   "Swatches": {
     "path": "src/Swatches"

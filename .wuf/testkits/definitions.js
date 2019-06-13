@@ -299,5 +299,10 @@ module.exports = {
 
   NestableList: {
     testkitPath: "../src/NestableList/NestableList.driver"
+  },
+
+  Stepper: {
+    unidriver: true,
+    testkitPath: "../src/Stepper/Stepper.uni.driver"
   }
 };
