@@ -34,6 +34,7 @@ autodocs-registry
 /new-icons/
 /src/new-icons/system
 /src/new-icons/*.js
+/bundles
 
 # applitools private config
 !applitools.config.js
