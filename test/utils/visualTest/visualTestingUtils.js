@@ -7,16 +7,17 @@ export const createDescribeObject = ({
 
   const describeToReturn = { describe: describeName, its: [] };
 
-  // Object.keys(propValues).map(propValue => {
-  //   describeToReturn.its.push({ [propName]: propValue} )
-  // });
+  Object.keys(propValues).map(propValue => {
+    const testScenario = { it: propValue, props: { [propName]: propValue } };
+    describeToReturn.its.push(testScenario);
+  });
 
   return describeToReturn;
 };
 
 const variablesValidation = ({ propName, propValues, describeName }) => {
   const propNameError = 'in valid prop name';
-  const propValuesError = 'in valid prop name';
+  const propValuesError = 'in valid prop values';
   const describeNameError = 'in valid describe name';
 
   if (propName === '') {

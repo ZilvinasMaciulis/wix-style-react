@@ -1,7 +1,7 @@
 import { createDescribeObject } from './visualTestingUtils';
 
 describe('Utils: visual testing', () => {
-  describe('"describe" object', () => {
+  describe('createDescribeObject', () => {
     const describeName = 'describeName';
     const propName = 'propName';
     const propValues = {
@@ -25,13 +25,41 @@ describe('Utils: visual testing', () => {
       ],
     };
 
-    it('should create a similar describe object to "describeObject" ', () => {
-      const describeToReturn = createDescribeObject({
-        propName,
-        propValues,
-        describeName,
+    describe('return value', () => {
+      it('should be similar to "describeObject" object', () => {
+        const describeToReturn = createDescribeObject({
+          propName,
+          propValues,
+          describeName,
+        });
+        expect(describeToReturn).toEqual(describeObject);
       });
-      expect(describeToReturn).toEqual(describeObject);
+    });
+
+    describe('arguments', () => {
+      it('should throw an error when propName is an empty string', () => {
+        const propNameError = 'in valid prop name';
+
+        const describeToReturn = () =>
+          createDescribeObject({ propName: '', propValues, describeName });
+        expect(describeToReturn).toThrow(propNameError);
+      });
+
+      it('should throw an error when propValues is an empty object', () => {
+        const propValuesError = 'in valid prop values';
+
+        const describeToReturn = () =>
+          createDescribeObject({ propName, propValues: {}, describeName });
+        expect(describeToReturn).toThrow(propValuesError);
+      });
+
+      it('should throw an error when describeName is an empty string', () => {
+        const describeNameError = 'in valid describe name';
+
+        const describeToReturn = () =>
+          createDescribeObject({ propName, propValues, describeName: '' });
+        expect(describeToReturn).toThrow(describeNameError);
+      });
     });
   });
 });
