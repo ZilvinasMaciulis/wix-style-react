@@ -38,6 +38,7 @@ require('../src/CloseButton/docs/index.story'); // 5.4 Close Button
 
 // 7. Tooltips
 require('./Tooltip/index.story'); // 7.1 Tooltip
+require('./PopoverMenu/index.story'); // 7.3 PopoverMenu
 
 // 8. Notification Bars
 require('../src/Notification/docs/index.story');
