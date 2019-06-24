@@ -68,7 +68,6 @@
     "generate-autodocs-registry": "node scripts/generate-autodocs-registry",
     "update-components": "./scripts/update-components.sh",
     "update-components:beta": "./scripts/update-components-beta.sh",
-    "generate-components-list": "wuf update --components src --max-mismatch 1 --exclude Typography",
     "generate-components-bundles": "node ./scripts/bundlify-components/bundlify.js",
     "eyes-storybook-debug": "start-storybook -c ./.storybook-test -p 6007",
     "audit-components-size": "npm run generate-components-bundles && source-map-explorer ./bundles/*.js",
