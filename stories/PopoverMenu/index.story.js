@@ -63,7 +63,8 @@ export default {
           </Cell>
           <Cell span={6}>
             <SectionHelper title="Next Generation PopoverMenu">
-              To enable new generation read more on Tooltip's API docs
+              To use new generation PopoverMenu make sure to import it from
+              /beta folder
             </SectionHelper>
           </Cell>
         </Layout>
@@ -75,7 +76,7 @@ export default {
     columns([
       description({
         title: 'Description',
-        text: `Tooltips can be attached to any active element (icons, text links, buttons, etc.) on a page. They provide descriptions or explanations for their paired element. Thus, tooltips are highly contextual and specific and don’t explain the bigger picture or entire task flow.`,
+        text: `A PopoverMenu is a menu component that can be open with given button component. It is often styled as a typical push button with a downward pointing arrow  to hint that activating the button will display a menu.`,
       }),
     ]),
 
@@ -104,5 +105,13 @@ export default {
     importExample(examples.importExample),
 
     sectionTitle('Examples'),
+
+    ...[
+      {
+        title: 'Plain Example',
+        text: 'Plain example of PopoverMenu usage.',
+        source: examples.basic,
+      },
+    ].map(example),
   ],
 };
