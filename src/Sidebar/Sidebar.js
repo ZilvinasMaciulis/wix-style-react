@@ -34,6 +34,9 @@ class Sidebar extends Component {
 
     /**  Sidebar menu children */
     children: PropTypes.node,
+
+    /**  Sidebar indicator for animating out or in */
+    isHidden: PropTypes.bool,
   };
 
   itemKey2Children = {};
@@ -201,9 +204,14 @@ class Sidebar extends Component {
       css.slider,
     );
 
+    const rootClasses = classnames({
+      [css.sideBar]: true,
+      [css.hiddenSideBar]: this.props.isHidden,
+    });
+
     return (
       <SidebarContext.Provider value={this.sidebarContext}>
-        <div className={css.sideBar} data-hook={this.props.dataHook}>
+        <div className={rootClasses} data-hook={this.props.dataHook}>
           {this.state.persistentTopChildren}
 
           <div className={css.content}>

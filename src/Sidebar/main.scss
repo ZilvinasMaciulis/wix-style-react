@@ -61,11 +61,10 @@ $scrollbarThumbColor: rgba(255, 255, 255, 0.4);
 
   z-index: 2;
   margin-left: 0;
+}
 
-  &.hidden {
-    margin-left: -$sidebarWidth;
-  }
-
+.hiddenSideBar {
+  margin-left: -$sidebarWidth;
 }
 
 .slider {
