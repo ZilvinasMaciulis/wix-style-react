@@ -6,7 +6,6 @@ $gap: 6px;
 $double-gap: 12px;
 $material-gap: 8px;
 
-
 .root {
   position: relative;
   display: flex;
@@ -17,7 +16,7 @@ $material-gap: 8px;
   @include FontRoman();
   &.readOnly {
     border: solid 1px $D60;
-    background-color: $D70;
+    background-color: $D10;
     @include ThemeHover($backgroundColor: $B50);
   }
 }
@@ -145,11 +144,7 @@ $material-gap: 8px;
     @include ThemeFocus($borderColor: $B10, $boxShadow: 0 0 0 3px $F00);
     @include ThemeError($borderColor: $paletteR1);
     @include ThemeWarning($borderColor: $paletteR5);
-    @include ThemeDisable(
-      $color: $D55,
-      $borderColor: $D60,
-      $backgroundColor: $D80
-    );
+    @include ThemeDisable($color: $D10-30, $borderColor: $D10-30);
     @include ThemeDisableHover($borderColor: $GR20);
   }
   &-paneltitle {
@@ -166,8 +161,8 @@ $material-gap: 8px;
     @include ThemeError($borderColor: $paletteR1);
     @include ThemeWarning($borderColor: $paletteR5);
     @include ThemeDisable(
-      $color: white,
-      $borderColor: $GR40,
+      $color: $D10-30,
+      $borderColor: $D10-30,
       $backgroundColor: rgba(22, 45, 61, 0.6)
     );
   }
@@ -187,11 +182,7 @@ $material-gap: 8px;
       $borderColor: $paletteR5,
       $boxShadow: inset 0px 0px 5px 0px fade($R70, 60%)
     );
-    @include ThemeDisable(
-      $color: $D55,
-      $borderColor: $D60,
-      $backgroundColor: $D80
-    );
+    @include ThemeDisable($color: $D10-30, $borderColor: $D10-30);
     @include ThemeDisableHover($borderColor: $GR20);
   }
   &-amaterial {
@@ -312,8 +303,6 @@ $material-gap: 8px;
         height: 2px;
       }
     }
-
-
   }
   &-material {
     border-radius: 0;
