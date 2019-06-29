@@ -1,8 +1,7 @@
-import { createDescribeObject } from './visualTestingUtils';
+import { createVisualTests, renderChildrenNodes } from './visualTestingUtils';
 
 describe('Utils: visual testing', () => {
-  describe('createDescribeObject', () => {
-    const describeName = 'describeName';
+  describe('createVisualTests', () => {
     const propName = 'propName';
     const propValues = {
       propValue1: 'propValue1',
@@ -11,8 +10,7 @@ describe('Utils: visual testing', () => {
 
     const { propValue1, propValue2 } = propValues;
 
-    const describeObject = {
-      describe: describeName,
+    const itsObject = {
       its: [
         {
           it: propValue1,
@@ -26,39 +24,30 @@ describe('Utils: visual testing', () => {
     };
 
     describe('return value', () => {
-      it('should be similar to "describeObject" object', () => {
-        const describeToReturn = createDescribeObject({
+      it('should return all visual test scenarios', () => {
+        const itsToReturn = createVisualTests({
           propName,
           propValues,
-          describeName,
         });
-        expect(describeToReturn).toEqual(describeObject);
+        expect(itsObject).toEqual(itsToReturn);
       });
     });
 
     describe('arguments', () => {
-      it('should throw an error when propName is an empty string', () => {
-        const propNameError = 'in valid prop name';
+      it('should throw an error when propName is invalid', () => {
+        const propNameError = 'invalid prop name';
 
-        const describeToReturn = () =>
-          createDescribeObject({ propName: '', propValues, describeName });
-        expect(describeToReturn).toThrow(propNameError);
+        const itsToReturn = () =>
+          createVisualTests({ propName: '', propValues });
+        expect(itsToReturn).toThrow(propNameError);
       });
 
-      it('should throw an error when propValues is an empty object', () => {
-        const propValuesError = 'in valid prop values';
+      it('should throw an error when propValues is invalid', () => {
+        const propValuesError = 'invalid prop values';
 
-        const describeToReturn = () =>
-          createDescribeObject({ propName, propValues: {}, describeName });
-        expect(describeToReturn).toThrow(propValuesError);
-      });
-
-      it('should throw an error when describeName is an empty string', () => {
-        const describeNameError = 'in valid describe name';
-
-        const describeToReturn = () =>
-          createDescribeObject({ propName, propValues, describeName: '' });
-        expect(describeToReturn).toThrow(describeNameError);
+        const itsToReturn = () =>
+          createVisualTests({ propName, propValues: {} });
+        expect(itsToReturn).toThrow(propValuesError);
       });
     });
   });

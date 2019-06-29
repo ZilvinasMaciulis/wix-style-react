@@ -1,34 +1,52 @@
-export const createDescribeObject = ({
-  propName = '',
-  propValues = {},
-  describeName = '',
-}) => {
-  variablesValidation({ propName, propValues, describeName });
+import React, { PureComponent } from 'react';
+import { node } from 'prop-types';
 
-  const describeToReturn = { describe: describeName, its: [] };
+export const createVisualTests = ({ propName, propValues }) => {
+  variablesValidation({ propName, propValues });
 
-  Object.keys(propValues).map(propValue => {
-    const testScenario = { it: propValue, props: { [propName]: propValue } };
-    describeToReturn.its.push(testScenario);
+  const its = { its: [] };
+
+  Object.keys(propValues).forEach(propValue => {
+    its.its.push(createTestScenario({ propName, propValue }));
   });
 
-  return describeToReturn;
+  return its;
 };
 
-const variablesValidation = ({ propName, propValues, describeName }) => {
-  const propNameError = 'in valid prop name';
-  const propValuesError = 'in valid prop values';
-  const describeNameError = 'in valid describe name';
+function createTestScenario({ propName, propValue }) {
+  return { it: propValue, props: { [propName]: propValue } };
+}
 
-  if (propName === '') {
+function variablesValidation({ propName, propValues }) {
+  const propNameError = 'invalid prop name';
+  const propValuesError = 'invalid prop values';
+
+  if (!propName) {
     throw new Error(propNameError);
   }
 
-  if (Object.keys(propValues).length === 0) {
+  if (!propValues || !Object.keys(propValues).length) {
     throw new Error(propValuesError);
   }
+}
 
-  if (describeName === '') {
-    throw new Error(describeNameError);
+export const renderChildrenNodes = ({ its }, componentToRender) =>
+  its.map(({ props }, i) => (
+    <VisualTestComponent key={i} child={componentToRender} {...props} />
+  ));
+
+class VisualTestComponent extends PureComponent {
+  static propTypes = {
+    child: node,
+  };
+
+  render() {
+    const { child, ...rest } = this.props;
+
+    return (
+      <div style={{ margin: '5px 0' }}>
+        {child && React.cloneElement(child, { ...rest })}
+      </div>
+    );
   }
-};
+}
