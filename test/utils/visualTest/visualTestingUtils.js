@@ -13,11 +13,11 @@ export const createVisualTests = ({ propName, propValues }) => {
   return its;
 };
 
-function createTestScenario({ propName, propValue }) {
+const createTestScenario = ({ propName, propValue }) => {
   return { it: propValue, props: { [propName]: propValue } };
-}
+};
 
-function variablesValidation({ propName, propValues }) {
+const variablesValidation = ({ propName, propValues }) => {
   const propNameError = 'invalid prop name';
   const propValuesError = 'invalid prop values';
 
@@ -28,7 +28,7 @@ function variablesValidation({ propName, propValues }) {
   if (!propValues || !Object.keys(propValues).length) {
     throw new Error(propValuesError);
   }
-}
+};
 
 export const renderChildrenNodes = ({ its }, componentToRender) =>
   its.map(({ props }, i) => (
