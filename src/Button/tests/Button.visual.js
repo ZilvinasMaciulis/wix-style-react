@@ -9,24 +9,22 @@ const defaultProps = {
   children: 'Button',
 };
 
-const skins = Object.values(SKINS);
+const skins = Object.values(SKINS).filter(skin => skin !== SKINS.premiumLight);
 
-const sizes = Object.keys(SIZES);
+const sizes = Object.values(SIZES);
 
 const test = (it, props) => ({ it, props });
 
 const tests = [
   {
     describe: 'Primary Skins',
-    its: skins
-      .filter(skin => skin !== SKINS.premiumLight) //no primary premiumLight skin
-      .map(skin => test(skin, { skin, priority: PRIORITY.primary })),
+    its: skins.map(skin => test(skin, { skin, priority: PRIORITY.primary })),
   },
   {
     describe: 'Secondary Skins',
     its: skins
       // box background for these skins (tests below)
-      .filter(skin => skin !== SKINS.transparent || skin !== SKINS.premiumLight)
+      .filter(skin => skin !== SKINS.transparent)
       .map(skin => test(skin, { skin, priority: PRIORITY.secondary })),
   },
   {

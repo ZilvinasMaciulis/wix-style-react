@@ -44,17 +44,29 @@ describe('Button', () => {
     });
 
     it('should render without errors when html element is passed', async () => {
-      const { driver } = render(<Button as="a" />);
+      const props = {
+        as: 'a',
+      };
+
+      const { driver } = render(createButton({ ...props, ...defaultProps }));
       expect(await driver.exists()).toBe(true);
     });
 
     it('should render without errors when function reference is passed', async () => {
-      const { driver } = render(<Button as={Link} />);
+      const props = {
+        as: Link,
+      };
+
+      const { driver } = render(createButton({ ...props, ...defaultProps }));
       expect(await driver.exists()).toBe(true);
     });
 
     it('should render without errors when class is passed', async () => {
-      const { driver } = render(<Button as={LinkClass} />);
+      const props = {
+        as: LinkClass,
+      };
+
+      const { driver } = render(createButton({ ...props, ...defaultProps }));
       expect(await driver.exists()).toBe(true);
     });
   });
@@ -69,6 +81,28 @@ describe('Button', () => {
   //     expect(await driver.isFocused()).toEqual(true);
   //   });
   // });
+
+  describe('Themes', () => {
+    describe('hasTheme', () => {
+      // standard is the default theme and there is no extra class for it
+      const themes = Object.values(SKINS).filter(
+        skin => skin !== SKINS.standard,
+      );
+
+      it.each(themes)(
+        'should return true when button has skin %s',
+        async theme => {
+          const props = {
+            skin: theme,
+          };
+          const { driver } = await render(
+            createButton({ ...defaultProps, ...props }),
+          );
+          expect(await driver.hasTheme(theme)).toEqual(true);
+        },
+      );
+    });
+  });
 
   describe(`Disabled`, () => {
     describe('isButtonDisabled', () => {

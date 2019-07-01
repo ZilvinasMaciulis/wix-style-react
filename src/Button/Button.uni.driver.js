@@ -1,9 +1,10 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil } from 'wix-ui-test-utils/unidriver';
-import styles from 'wix-ui-core/dist/src/components/button-next/button-next.st.css';
+import stylesBase from 'wix-ui-core/dist/src/components/button-next/button-next.st.css';
+import styles from './Button.st.css';
 
 const buttonNextDriverFactory = base => {
-  const stylableUtil = new StylableUnidriverUtil(styles);
+  const stylableUtil = new StylableUnidriverUtil(stylesBase);
 
   return {
     ...baseUniDriverFactory(base),
@@ -20,7 +21,7 @@ const buttonNextDriverFactory = base => {
       return stylableUtil.hasStyleState(base, 'disabled');
     },
     /** Returns true if the Button was configured with given theme */
-    hasTheme: themeName => base.hasClass(themeName),
+    hasTheme: themeName => base.hasClass(styles[themeName]),
   };
 };
 
