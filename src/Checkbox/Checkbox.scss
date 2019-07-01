@@ -106,16 +106,12 @@
   cursor: default;
 
   .checkbox {
-    border-color: $GR20;
-    background-color: $D70;
+    border-color: var(--D10-20);
+    background-color: var(--D10-05);
   }
 
-  &.checked .checkbox {
-    border-color: $D60;
-
-    .inner {
-      color: $D55;
-    }
+  & .checkbox .inner {
+    color: var(--D10-30);
   }
 }
 
