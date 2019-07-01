@@ -131,6 +131,9 @@ Slider.propTypes = {
 
   /** The slider's selected range */
   value: oneOfType([arrayOf(PropTypes.number), number]),
+
+  /** Make it disabled */
+  disabled: PropTypes.bool,
 };
 
 Slider.defaultProps = {
@@ -143,4 +146,5 @@ Slider.defaultProps = {
   displayTooltip: true,
   displayMarks: true,
   rtl: false,
+  disabled: false,
 };

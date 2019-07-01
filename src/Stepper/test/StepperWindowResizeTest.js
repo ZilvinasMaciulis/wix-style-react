@@ -15,7 +15,9 @@ const steps7 = [
   { text: 'This is a long step name', type: 'disabled' },
 ];
 
-const kind = `${TESTS_PREFIX}/${storySettings.category}/${storySettings.storyName}`;
+const kind = `${TESTS_PREFIX}/${storySettings.category}/${
+  storySettings.storyName
+}`;
 
 storiesOf(kind, module).add(storySettings.testStoryNames.WINDOW_RESIZE, () => (
   <div style={{ marginLeft: 100, marginTop: 100 }}>
