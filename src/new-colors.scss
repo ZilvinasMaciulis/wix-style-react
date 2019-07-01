@@ -1,0 +1,19 @@
+/*
+ *  We encourage using native css variables:
+ *  1. Easier to debug in the browser, it shows in the Computed css tab the variable name,
+ *     which is easy to find in the code.
+ *  2. Supported in all css frameworks (stylable, sass...), so it allows us to bridge between them.
+ */
+
+@import './colors.scss';
+
+@function colorWithOpacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+:root {
+  --D10-05: #{colorWithOpacity($D10, 0.05)};
+  --D10-10: #{colorWithOpacity($D10, 0.1)};
+  --D10-20: #{colorWithOpacity($D10, 0.2)};
+  --D10-30: #{colorWithOpacity($D10, 0.3)};
+}
