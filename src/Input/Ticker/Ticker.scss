@@ -19,6 +19,6 @@
 
   &.disabled {
     cursor: not-allowed;
-    color: $GR10;
+    color: var(--D10-30);
   }  
 }

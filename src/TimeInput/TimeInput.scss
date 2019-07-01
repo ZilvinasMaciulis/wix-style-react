@@ -48,8 +48,7 @@
 
 .disabled .ampm {
     cursor: default;
-    color: $D50;
-    &:hover { color: $D50; }
+    color: var(--D10-30);
 }
 
 .input {
