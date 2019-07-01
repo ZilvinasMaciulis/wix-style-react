@@ -7,12 +7,20 @@ const buttonNextDriverFactory = base => {
 
   return {
     ...baseUniDriverFactory(base),
+
+    /** Returns button text */
     getButtonTextContent: async () => base.text(),
+
+    /** Returns true if the button is focused */
     isFocused: async () => document.activeElement === (await base.getNative()), // eslint-disable-line no-restricted-properties
+
+    /** Returns true if the button is disabled */
     isButtonDisabled: async () => {
       // Using stylable state and not html 'disabled' attribute, since if 'href' exists, then we don't pu the 'disabled' attribute.
       return stylableUtil.hasStyleState(base, 'disabled');
     },
+    /** Returns true if the Button was configured with given theme */
+    hasTheme: themeName => base.hasClass(themeName),
   };
 };
 

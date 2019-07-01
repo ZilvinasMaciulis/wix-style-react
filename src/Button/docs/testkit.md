@@ -8,7 +8,10 @@
 | element              | -         | `Promise<element>` | returns the component element      |
 | click                | -         | `Promise<void>`    | clicks on the button               |
 | getButtonTextContent | -         | `Promise<string>`  | returns button text                |
+| isFocused            | -         | `Promise<boolean>` | returns true if button is focused  |
 | isButtonDisabled     | -         | `Promise<boolean>` | returns true if button is disabled |
+| hasTheme             | themeName | `Promise<boolean>` | returns true if button was configured with given theme |
+
 
 ## ReactTestUtils Example
 

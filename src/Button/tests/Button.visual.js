@@ -3,35 +3,31 @@ import { storiesOf } from '@storybook/react';
 import Button from '../Button';
 import Box from 'wix-style-react/Box';
 import AddChannel from '../../new-icons/AddChannel';
+import { SIZES, SKINS, PRIORITY } from '../constants';
 
 const defaultProps = {
   children: 'Button',
 };
 
-const skins = [
-  'standard',
-  'inverted',
-  'destructive',
-  'premium',
-  'dark',
-  'light',
-  'transparent',
-];
+const skins = Object.values(SKINS);
 
-const sizes = ['large', 'medium', 'small', 'tiny'];
+const sizes = Object.keys(SIZES);
 
 const test = (it, props) => ({ it, props });
 
 const tests = [
   {
     describe: 'Primary Skins',
-    its: skins.map(skin => test(skin, { skin, priority: 'primary' })),
+    its: skins
+      .filter(skin => skin !== SKINS.premiumLight) //no primary premiumLight skin
+      .map(skin => test(skin, { skin, priority: PRIORITY.primary })),
   },
   {
     describe: 'Secondary Skins',
     its: skins
-      .filter(skin => skin !== 'transparent')
-      .map(skin => test(skin, { skin, priority: 'secondary' })),
+      // box background for these skins (tests below)
+      .filter(skin => skin !== SKINS.transparent || skin !== SKINS.premiumLight)
+      .map(skin => test(skin, { skin, priority: PRIORITY.secondary })),
   },
   {
     describe: 'Sizes',
@@ -66,8 +62,15 @@ tests.forEach(({ describe, its }) => {
   });
 });
 
-storiesOf(`Button/Secondary Skins`, module).add('transparent', () => (
-  <Box backgroundColor="B20" width={100} padding="3px">
-    <Button {...defaultProps} priority="secondary" skin="transparent" />
-  </Box>
-));
+const testWithBoxWrapper = [
+  { boxBackground: 'B20', skin: SKINS.transparent },
+  { boxBackground: 'D10', skin: SKINS.premiumLight },
+];
+
+testWithBoxWrapper.forEach(({ skin, boxBackground }) => {
+  storiesOf(`Button/Secondary Skins`, module).add(skin, () => (
+    <Box backgroundColor={boxBackground} width={100} padding="3px">
+      <Button {...defaultProps} priority={PRIORITY.secondary} skin={skin} />
+    </Box>
+  ));
+});
