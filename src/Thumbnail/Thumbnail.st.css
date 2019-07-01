@@ -66,11 +66,11 @@
 }
 
 .thumbnail:selected:disabled {
-  box-shadow: 0 0 0 2px value(D55) inset;
+  box-shadow: 0 0 0 2px var(--D10-30) inset;
 }
 
 .thumbnail:disabled {
-  box-shadow: 0 0 0 1px value(D55) inset;
+  box-shadow: 0 0 0 1px var(--D10-30) inset;
   cursor: default;
 }
 
@@ -79,12 +79,13 @@
 }
 
 .thumbnail:disabled .selectedIcon {
+  color: var(--D80-70);
   background: value(D55);
 }
 
 .thumbnail:disabled .title,
 .thumbnail:disabled .description {
-  color: value(D55);
+  color: var(--D10-30);
 }
 
 
@@ -114,14 +115,13 @@
 
 .thumbnail:hasBackground:selected:disabled,
 .thumbnail:hasChildren:selected:disabled {
-  box-shadow: 0 0 0 2px value(D55);
+  box-shadow: 0 0 0 2px var(--D10-30);
 }
 
 .thumbnail:hasBackground:disabled,
 .thumbnail:hasChildren:disabled {
-  box-shadow: 0 0 0 1px value(D55);
+  box-shadow: 0 0 0 1px var(--D10-30);
 }
-
 
 .customChild {
   -st-states: disabled;
@@ -164,7 +164,7 @@
 }
 
 .bottomTitle:disabled {
-  color: value(D55);
+  color: var(--D10-30);
 }
 
 .image {
