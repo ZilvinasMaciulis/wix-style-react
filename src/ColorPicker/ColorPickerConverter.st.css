@@ -4,11 +4,6 @@
 }
 
 :import {
-  -st-from: "../Foundation/stylable/mixins/calc_rgba";
-  -st-default: calcRgba;
-}
-
-:import {
   -st-from: "../Foundation/stylable/colors.st.css";
   -st-named: F00, B00;
 }
@@ -31,7 +26,7 @@
   flex: 0 0 30px;
   margin-left: 12px;
   border-radius: 6px;
-  border: solid 1px calcRgba(value(B00), 24);
+  border: solid 1px var(--B00-24);
 }
 
 .preview:noColorSelected {
@@ -44,7 +39,7 @@
 }
 
 .preview:clickable:hover {
-  border-color: calcRgba(value(B00), 42);
+  border-color: var(--B00-42);
 }
 
 .preview:clickable {

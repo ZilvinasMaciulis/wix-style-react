@@ -4,11 +4,6 @@
 }
 
 :import {
-  -st-from: "../Foundation/stylable/mixins/calc_rgba";
-  -st-default: calcRgba;
-}
-
-:import {
   -st-from: "../Foundation/stylable/colors.st.css";
   -st-named: B00, B10, F00;
 }
@@ -34,14 +29,14 @@
   -st-extends: Focusable;
   -st-states: selected, size(string), transparent;
   border-radius: 4px;
-  border: solid 1px calcRgba(value(B00), 24);
+  border: solid 1px var(--B00-24);
   cursor: pointer;
 
   /* Disable native focus */
   outline: none;
 }
 .swatch:hover {
-  border-color: calcRgba(value(B00), 42);
+  border-color: var(--B00-42);
 }
 .swatch:selected {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px value(B10);
