@@ -75,15 +75,6 @@
   }
 }
 
-@mixin ThemeDisableHover($borderColor) {
-  &.disabled {
-    &:hover,
-    &.hasHover {
-      border-color: $borderColor;
-    }
-  }
-}
-
 @mixin ThemeFlat($color) {
   .input {
     @include Placeholder($color: $color);

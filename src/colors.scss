@@ -1,5 +1,3 @@
-@import './colors-helpers.scss';
-
 $D10: #162d3d; // Main input text, titles
 $D20: #32536a; // Titles, texts
 $D30: #577083; // Texts
@@ -9,13 +7,6 @@ $D55: #cbd3dc; // Disabled button - new version - naming not final
 $D60: #dfe5eb; // Dividers
 $D70: #f0f4f7; // Page background, dividers
 $D80: #ffffff; // Content box background
-
-$D10-05: colorWithOpacity($D10, 0.05);
-//$D10-10: colorWithOpacity($D10, 0.1);
-//$D10-20: colorWithOpacity($D10, 0.2);
-$D10-30: colorWithOpacity($D10, 0.3);
-//$D80-30: colorWithOpacity($D80, 0.3);
-//$D80-70: colorWithOpacity($D80, 0.7);
 
 $B00: #2b81cb; // Buttons
 $B05: #308ddd; // CTA
@@ -91,10 +82,6 @@ $Shadow40: 0 8px 8px 0 $S10, 0 3px 24px 0 $S40;
   D60: $D60;
   D70: $D70;
   D80: $D80;
-
-  D10-05: $D10-05;
-  D10-30: $D10-30;
-  //D80-70: $D80-70;
 
   B00: $B00;
   B05: $B05;

@@ -102,7 +102,7 @@ $gap: 6px;
     @include ThemeHover($backgroundColor: $B50);
     @include ThemeFocus;
     @include ThemeError($borderColor: $paletteR1);
-    @include ThemeDisabled($D10-30, $D10-05, $D10-30);
+    @include ThemeDisabled(var(--D10-30), var(--D10-05), var(--D10-30));
   }
   &-paneltitle {
     @include ThemeDefault(

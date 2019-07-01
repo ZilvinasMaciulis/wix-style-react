@@ -55,8 +55,8 @@ $padding: 12px;
 }
 
 .disabled {
-  $color: $D55;
-  $borderColor: $D60;
+  $color: var(--D10-30);
+  $borderColor: var(--D10-30);
 
   .toolbar {
     border-color: $borderColor;

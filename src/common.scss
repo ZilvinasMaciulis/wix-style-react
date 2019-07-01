@@ -1,12 +1,13 @@
 @import './common/Focusable/FocusableMixins.scss';
 @import './colors.scss';
 @import './fonts.scss';
+@import './new-colors.scss';
 
 @mixin withRTL() {
-  :global(.rtl), :global([dir='rtl']) {
-    @content
+  :global(.rtl),
+  :global([dir='rtl']) {
+    @content;
   }
 }
 
 $cardBorderRadius: 8px;
-

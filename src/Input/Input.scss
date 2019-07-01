@@ -1,6 +1,7 @@
 @import '../common.scss';
 @import './InputMixins.scss';
 @import '../typography-helpers.scss';
+@import '../new-colors.scss';
 
 $gap: 6px;
 $double-gap: 12px;
@@ -144,8 +145,11 @@ $material-gap: 8px;
     @include ThemeFocus($borderColor: $B10, $boxShadow: 0 0 0 3px $F00);
     @include ThemeError($borderColor: $paletteR1);
     @include ThemeWarning($borderColor: $paletteR5);
-    @include ThemeDisable($color: $D10-30, $borderColor: $D10-30);
-    @include ThemeDisableHover($borderColor: $GR20);
+    @include ThemeDisable(
+      $color: var(--D10-30),
+      $backgroundColor: var(--D10-05),
+      $borderColor: var(--D10-30)
+    );
   }
   &-paneltitle {
     @include ThemeDefault(
@@ -161,9 +165,9 @@ $material-gap: 8px;
     @include ThemeError($borderColor: $paletteR1);
     @include ThemeWarning($borderColor: $paletteR5);
     @include ThemeDisable(
-      $color: $D10-30,
-      $borderColor: $D10-30,
-      $backgroundColor: rgba(22, 45, 61, 0.6)
+      $color: var(--D10-30),
+      $backgroundColor: var(--D10-05),
+      $borderColor: var(--D10-30)
     );
   }
   &-tags {
@@ -182,8 +186,11 @@ $material-gap: 8px;
       $borderColor: $paletteR5,
       $boxShadow: inset 0px 0px 5px 0px fade($R70, 60%)
     );
-    @include ThemeDisable($color: $D10-30, $borderColor: $D10-30);
-    @include ThemeDisableHover($borderColor: $GR20);
+    @include ThemeDisable(
+      $color: var(--D10-30),
+      $backgroundColor: var(--D10-05),
+      $borderColor: var(--D10-30)
+    );
   }
   &-amaterial {
     .errorIcon {

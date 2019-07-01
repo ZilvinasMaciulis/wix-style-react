@@ -1,0 +1,10 @@
+@import './colors.scss';
+
+@function colorWithOpacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+:root {
+  --D10-05: #{colorWithOpacity($D10, 0.05)};
+  --D10-30: #{colorWithOpacity($D10, 0.3)};
+}
