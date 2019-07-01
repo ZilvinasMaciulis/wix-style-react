@@ -74,7 +74,7 @@
 .root:skin(disabled),
 .root:skin(disabled):light,
 .root:skin(disabled):secondary {
-  color: value(D55);
+  color: var(--D10-30);
 }
 
 .root:size(medium):weight(bold),
