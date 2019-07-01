@@ -4,11 +4,6 @@
 }
 
 :import {
-  -st-from: "../Foundation/stylable/mixins/calc_rgba";
-  -st-default: calcRgba;
-}
-
-:import {
   -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
   -st-default: Focusable;
 }
@@ -34,7 +29,7 @@
 .root:disabled {
   cursor: default;
   pointer-events: none;
-  color: calcRgba(value(D10), 30);
+  color: var(--D10-30);
 }
 
 .root:not(:disabled):focus-visible {
@@ -68,7 +63,7 @@
 
 .root:skin(standard):disabled .text, 
 .root:skin(standard):disabled .prefixIcon {
-  color: calcRgba(value(D10), 30);
+  color: var(--D10-30);
 }
 
 /** Skin dark */
@@ -90,7 +85,7 @@
 
 .root:skin(dark):disabled .text, 
 .root:skin(dark):disabled .prefixIcon {
-  color: calcRgba(value(D10), 30);
+  color: var(--D10-30);
 }
 
 /** Skin destructive */
@@ -102,7 +97,7 @@
 
 .root:skin(destructive):disabled .text, 
 .root:skin(destructive):disabled .prefixIcon {
-  color: calcRgba(value(D10), 30);
+  color: var(--D10-30);
 }
 
 .text {

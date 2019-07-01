@@ -5,6 +5,7 @@
 }
 
 :root {
+  --B00-24: #{colorWithOpacity($B00, 0.24)};
   --D10-05: #{colorWithOpacity($D10, 0.05)};
   --D10-30: #{colorWithOpacity($D10, 0.3)};
 }
