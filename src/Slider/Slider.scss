@@ -56,16 +56,16 @@
   background: transparent;
 }
 
-:global(.wix-style-react-slider) :global(.rc-slider-disabled) {
-  background-color: transparent;
-}
-
 :global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-rail) {
-  background-color: $D60;
+  background-color: var(--D10-10);
 }
 
 :global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-track) {
-  background-color: $D55;
+  background-color: var(--D10-20);
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-handle) {
+  color: var(--D10-20);
 }
 
 .markLine {
