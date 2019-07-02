@@ -54,8 +54,8 @@
 
 .root:theme(plain):disabled {
   cursor: not-allowed;
-  background-color: value(D70);
-  color: value(D55);
+  background-color: var(--D10-05);
+  color: var(--D10-30);
 }
 
 /** Theme dashes **/
@@ -76,9 +76,9 @@
 
 .root:theme(dashes):disabled {
   cursor: not-allowed;
-  background-color: value(opacity48);
-  color: value(D55);
-  border: dashed 1px value(D55);
+  background-color: var(--D10-05);
+  color: var(--D10-30);
+  border: dashed 1px var(--D10-30);
 }
 
 .root:not(:disabled):focus-visible:theme(dashes) {
