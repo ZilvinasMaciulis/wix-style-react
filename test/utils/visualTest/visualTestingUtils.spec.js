@@ -1,7 +1,7 @@
 import { createVisualTestsByProp } from './visualTestingUtils';
 
 describe('Utils: visual testing', () => {
-  describe('createVisualTests', () => {
+  describe('createVisualTestsByProp', () => {
     const propName = 'propName';
     const propValues = {
       propValue1: 'propValue1',
