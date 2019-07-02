@@ -71,9 +71,7 @@ describe('multiSelectCheckbox', () => {
     { key: 'Space', keyCode: 32, which: 32 },
   ];
   OPEN_DROPDOWN_CHARS.forEach(charData => {
-    it(`should show dropdown on input focus and press on ${
-      charData.key
-    }`, () => {
+    it(`should show dropdown on input focus and press on ${charData.key}`, () => {
       const { inputDriver, dropdownLayoutDriver } = createDriver(
         <MultiSelectCheckbox options={options} />,
       );
