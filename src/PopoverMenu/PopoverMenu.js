@@ -7,6 +7,7 @@ import More from '../new-icons/More';
 import PopoverMenuItem from '../PopoverMenuItem';
 import classnames from 'classnames';
 import {
+  any,
   oneOf,
   oneOfType,
   bool,
@@ -44,7 +45,7 @@ class PopoverMenu extends WixComponent {
      */
     appendToParent: bool,
     /** An element which will contain the popover  */
-    appendTo: element,
+    appendTo: any,
     /** Sets a zIndex to the popover  */
     zIndex: number,
     showArrow: bool,
