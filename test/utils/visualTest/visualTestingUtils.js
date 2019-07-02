@@ -4,13 +4,13 @@ import { node } from 'prop-types';
 export const createVisualTestsByProp = ({ propName, propValues }) => {
   variablesValidation({ propName, propValues });
 
-  const its = { its: [] };
+  const describe = { its: [] };
 
   Object.keys(propValues).forEach(propValue => {
-    its.its.push(createTestScenario({ propName, propValue }));
+    describe.its.push(createTestScenario({ propName, propValue }));
   });
 
-  return its;
+  return describe;
 };
 
 const createTestScenario = ({ propName, propValue }) => {
