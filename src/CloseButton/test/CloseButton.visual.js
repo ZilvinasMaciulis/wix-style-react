@@ -1,12 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import CloseButton from '.';
-import { SIZES, SKINS } from './constants';
+import CloseButton from '../index';
+import { SIZES, SKINS } from '../constants';
 import { Layout, Cell } from 'wix-style-react/Layout';
 import {
   renderChildrenNodes,
   createVisualTests,
-} from '../../test/utils/visualTest/visualTestingUtils';
+} from '../../../test/utils/visualTest/visualTestingUtils';
 
 const defaultProps = {
   disabled: false,

@@ -32,7 +32,9 @@ const variablesValidation = ({ propName, propValues }) => {
 
 export const renderChildrenNodes = ({ its }, componentToRender) =>
   its.map(({ props }, i) => (
-    <VisualTestComponent key={i} child={componentToRender} {...props} />
+    <VisualTestComponent key={i}>
+      {React.cloneElement(componentToRender, props)}
+    </VisualTestComponent>
   ));
 
 class VisualTestComponent extends PureComponent {
@@ -41,12 +43,6 @@ class VisualTestComponent extends PureComponent {
   };
 
   render() {
-    const { child, ...rest } = this.props;
-
-    return (
-      <div style={{ margin: '5px 0' }}>
-        {child && React.cloneElement(child, { ...rest })}
-      </div>
-    );
+    return <div style={{ margin: '5px 0' }}>{this.props.children}</div>;
   }
 }
