@@ -12,7 +12,6 @@ import {
   code as baseCode,
   playground,
   api,
-  testkit,
 } from 'wix-storybook-utils/Sections';
 import SectionHelper from 'wix-style-react/SectionHelper';
 import { Layout, Cell } from 'wix-style-react/Layout';
@@ -22,6 +21,8 @@ import allComponents from '../../../stories/utils/allComponents';
 import MaynSteps from '!raw-loader!./examples/ManySteps';
 import FourSteps from '!raw-loader!./examples/FourSteps';
 import Stepper from '..';
+
+import testkitDesc from './testkit.md';
 
 const code = config =>
   baseCode({
@@ -125,7 +126,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
-        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Testkit', sections: [description(testkitDesc)] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),
