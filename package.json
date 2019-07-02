@@ -26,8 +26,8 @@
   },
   "scripts": {
     "start": "./scripts/npm-start.sh",
-    "pretest": "if [ ! \"$agentType\" = \"pull-request\" ]; then npm run lint && ./scripts/ensure-dist.sh; fi",
-    "test": "if [ ! \"$agentType\" = \"pull-request\" ]; then npm run test:unit && npm run test:eyes-storybook && npm run test:e2e && npm run test:types; fi",
+    "pretest": "if [ ! \"$agentType\" = \"pullrequest\" ]; then npm run lint && ./scripts/ensure-dist.sh; fi",
+    "test": "if [ ! \"$agentType\" = \"pullrequest\" ]; then npm run test:unit && npm run test:eyes-storybook && npm run test:e2e && npm run test:types; fi",
     "test1": "npm run test:unit",
     "test2": "npm run test:eyes-storybook",
     "test3": "npm run test:e2e",
