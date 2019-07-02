@@ -27,7 +27,7 @@
   "scripts": {
     "start": "./scripts/npm-start.sh",
     "pretest": "npm run lint && ./scripts/ensure-dist.sh",
-    "test": "npm run test:unit && npm run test:eyes-storybook && npm run test:e2e && npm run test:types",
+    "test": "npm run test:unit && npm run test:eyes-storybook && npm run test:e2e && npm run test:types && npm run sanity",
     "test1": "echo running test1",
     "test2": "echo running test2",
     "test3": "echo running test3",
@@ -69,7 +69,8 @@
     "update-components": "./scripts/update-components.sh",
     "update-components:beta": "./scripts/update-components-beta.sh",
     "eyes-storybook-debug": "start-storybook -c ./.storybook-test -p 6007",
-    "make-async-spec": "npx jscodeshift -t scripts/unidriver-migration/src/make-async/make-async.js"
+    "make-async-spec": "npx jscodeshift -t scripts/unidriver-migration/src/make-async/make-async.js",
+    "sanity": "autotools-sanity --files './src/**/*.meta.js'"
   },
   "husky": {
     "hooks": {
@@ -122,6 +123,7 @@
     "@types/react": "16.8.4",
     "@types/react-dom": "^16.0.5",
     "@ui-autotools/registry": "^3.4.0",
+    "@ui-autotools/sanity": "^2.8.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-dynamic-import-node": "^2.3.0",
