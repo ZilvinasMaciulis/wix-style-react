@@ -12,7 +12,6 @@
 | isButtonDisabled     | -         | `Promise<boolean>` | returns true if button is disabled |
 | hasTheme             | themeName | `Promise<boolean>` | returns true if button was configured with given theme |
 
-
 ## ReactTestUtils Example
 
 ```javascript

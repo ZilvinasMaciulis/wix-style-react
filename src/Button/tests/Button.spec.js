@@ -71,17 +71,6 @@ describe('Button', () => {
     });
   });
 
-  //TODO: add a test for checking isFocused function
-  // describe('"focus" method', () => {
-  //   it('should allow to focus on button using the focus method on its ref', async () => {
-  //     const { driver } = await render(<Button ref="button-ref"/>);
-  //     console.log(driver);
-  //     expect(await driver.isFocused()).toEqual(false);
-  //     //ref.current.focus();
-  //     expect(await driver.isFocused()).toEqual(true);
-  //   });
-  // });
-
   describe('Themes', () => {
     describe('hasTheme', () => {
       // standard is the default theme and there is no extra class for it
