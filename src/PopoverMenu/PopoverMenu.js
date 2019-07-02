@@ -12,6 +12,8 @@ import {
   oneOfType,
   bool,
   element,
+  func,
+  instanceOf,
   number,
   string,
   func,
@@ -45,7 +47,7 @@ class PopoverMenu extends WixComponent {
      */
     appendToParent: bool,
     /** An element which will contain the popover  */
-    appendTo: any,
+    appendTo: oneOfType([element, instanceOf(Element), func, oneOf(['window', 'scrollParent', 'viewPort', 'parent'])]),
     /** Sets a zIndex to the popover  */
     zIndex: number,
     showArrow: bool,
