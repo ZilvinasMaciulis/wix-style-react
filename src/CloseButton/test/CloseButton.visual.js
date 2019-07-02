@@ -5,7 +5,7 @@ import { SIZES, SKINS } from '../constants';
 import { Layout, Cell } from 'wix-style-react/Layout';
 import {
   renderChildrenNodes,
-  createVisualTests,
+  createVisualTestsByProp,
 } from '../../../test/utils/visualTest/visualTestingUtils';
 
 const defaultProps = {
@@ -17,14 +17,14 @@ const defaultProps = {
 const tests = [
   {
     describe: 'Sizes',
-    ...createVisualTests({
+    ...createVisualTestsByProp({
       propName: 'size',
       propValues: SIZES,
     }),
   },
   {
     describe: 'Skins',
-    ...createVisualTests({
+    ...createVisualTestsByProp({
       propName: 'skin',
       propValues: SKINS,
     }),

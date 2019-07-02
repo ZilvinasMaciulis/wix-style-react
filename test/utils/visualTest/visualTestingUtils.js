@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { node } from 'prop-types';
 
-export const createVisualTests = ({ propName, propValues }) => {
+export const createVisualTestsByProp = ({ propName, propValues }) => {
   variablesValidation({ propName, propValues });
 
   const its = { its: [] };

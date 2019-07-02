@@ -1,4 +1,4 @@
-import { createVisualTests, renderChildrenNodes } from './visualTestingUtils';
+import { createVisualTestsByProp } from './visualTestingUtils';
 
 describe('Utils: visual testing', () => {
   describe('createVisualTests', () => {
@@ -25,7 +25,7 @@ describe('Utils: visual testing', () => {
 
     describe('return value', () => {
       it('should return all visual test scenarios', () => {
-        const itsToReturn = createVisualTests({
+        const itsToReturn = createVisualTestsByProp({
           propName,
           propValues,
         });
@@ -38,7 +38,7 @@ describe('Utils: visual testing', () => {
         const propNameError = 'invalid prop name';
 
         const itsToReturn = () =>
-          createVisualTests({ propName: '', propValues });
+          createVisualTestsByProp({ propName: '', propValues });
         expect(itsToReturn).toThrow(propNameError);
       });
 
@@ -46,7 +46,7 @@ describe('Utils: visual testing', () => {
         const propValuesError = 'invalid prop values';
 
         const itsToReturn = () =>
-          createVisualTests({ propName, propValues: {} });
+          createVisualTestsByProp({ propName, propValues: {} });
         expect(itsToReturn).toThrow(propValuesError);
       });
     });
