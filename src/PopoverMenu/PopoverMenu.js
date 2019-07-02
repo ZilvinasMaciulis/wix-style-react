@@ -7,7 +7,6 @@ import More from '../new-icons/More';
 import PopoverMenuItem from '../PopoverMenuItem';
 import classnames from 'classnames';
 import {
-  any,
   oneOf,
   oneOfType,
   bool,
