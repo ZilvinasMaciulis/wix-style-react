@@ -11,7 +11,6 @@ import {
   oneOfType,
   bool,
   element,
-  func,
   instanceOf,
   number,
   string,
