@@ -19,7 +19,7 @@ function createRendererBase(createDriver, defaultOptions = {}) {
     const element = getElement({ rendered, dataHook });
     return {
       ...rendered,
-      driver: createDriver({ rendered, element }),
+      driver: createDriver({ rendered, element, component: jsx }),
     };
   };
 }
@@ -32,11 +32,12 @@ function createRendererBase(createDriver, defaultOptions = {}) {
  * @param [object] options - render-options for @testing-library/react. The options may also contain a `dataHook` prop which if provided then the driver would be created with the element which is found by the dataHook. If not provided then it assumes that the rendered root element is the component's root element and it will be used for the driver.
  */
 export function createRendererWithDriver(driverFactory, defaultOptions = {}) {
-  const createDriver = ({ rendered, element }) =>
+  const createDriver = ({ rendered, element, component }) =>
     driverFactory({
       element: element,
       wrapper: rendered.container,
       eventTrigger: Simulate,
+      component,
     });
   return createRendererBase(createDriver, defaultOptions);
 }
@@ -53,11 +54,12 @@ export function createRendererWithUniDriver(
   driverFactory,
   defaultOptions = {},
 ) {
-  const createDriver = ({ element }) =>
+  const createDriver = ({ element, component }) =>
     driverFactory(
       reactUniDriver(element),
       reactUniDriver(document.body),
       reactUniDriver(document),
+      component,
     );
   return createRendererBase(createDriver, defaultOptions);
 }
