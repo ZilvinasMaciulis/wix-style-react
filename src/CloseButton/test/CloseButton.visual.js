@@ -4,9 +4,9 @@ import CloseButton from '../index';
 import { SIZES, SKINS } from '../constants';
 import { Layout, Cell } from 'wix-style-react/Layout';
 import {
-  renderChildrenNodes,
+  renderTestComponents,
   createVisualTestsByProp,
-} from '../../../test/utils/visualTest/visualTestingUtils';
+} from '../../../test/utils/visual';
 
 const defaultProps = {
   disabled: false,
@@ -32,7 +32,7 @@ const tests = [
 ];
 
 tests.forEach(({ describe, its }) => {
-  const children = renderChildrenNodes(
+  const children = renderTestComponents(
     { its },
     <CloseButton {...defaultProps} />,
   );
